@@ -9,8 +9,10 @@
 - Name: Kazuaki Matsuo
 - Company: Cookpad .Inc
 - Role: Test Engineer / Software Engineer in Quality
-- Lang: Swift/ObjC/Java(for Android)/Ruby/Elixir
+- Dev: :swift: / :ruby: / :java: for  :android: / :elixir: :erlang:
 - maintain: Appium ruby-binding
+
+![](images/about_me_appium.png)
 
 ^ まず自己紹介です。
 ^ 私は普段はモバイルアプリのテスト自動化やプロセス改善、もっと大きく組織的な改善活動にも関わっています。
@@ -27,7 +29,9 @@
 
 # Based on test pyramid
 
-![](images/Test-Pyramid-Adventures-in-QA.png)
+![](images/based_on_test_pyramid.png)
+
+- http://www.utest.com/articles/mobile-test-pyramid
 
 ^ このピラミッドは目にすることが多いかもしれません。
 ^ 実施するテストレベルと、その量がどのような関係にあると理想的か、ということを表した図です。
@@ -46,7 +50,8 @@
 
 # What is Cookpad?
 
-cookpad.com/us と cookpad.com/jp のWebページを1つの画面に並列でのせる
+![](images/about_cookpad_en.png)
+![](images/about_cookpad_jp.png)
 
 ^ Cookpadはレシピ共有サービスを提供しています。始まりはWebサービスからでした。
 ^ 現在は日本向けのものと、日本以外に向けたものを提供しています。これは、Webサービスの成熟度の違いからきていますが、いずれも同じcookpadです。
@@ -58,7 +63,8 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 # Cookpad for iOS(Japan and Global)
 
-日本のスクショと、海外向けのスクショを載せる
+![](images/cookpad_for_ios_japan.png)
+![](images/cookpad_for_ios_global.png)
 
 ^ クックパッドの主なiOSアプリには2種類あります。それは日本向けのアプリと、日本以外に向けたアプリです。
 ^ 国外からいらっしゃった方は、この海外向けのものをよく見るとおもいます。
@@ -66,8 +72,11 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 # History for Cookpad iOS App
 
-- クックパッドアプリの遷移
-- (図)横軸を時間とした、cookpadアプリのUIの遷移を乗せ、現在のtopを表示する
+![](images/history_for_cookpad_ios_image1.png)
+![](images/history_for_cookpad_ios_image2.png)
+![](images/history_for_cookpad_ios_image3.png)
+![](images/history_for_cookpad_ios_image4.png)
+![](images/history_for_cookpad_ios_graph.png)
 
 ^ このクックパッドアプリはすでに5年の時を経ています。その間、UIを複数回大きく変えました。
 ^ 2013年に大きくアプリを作り変え、2014年にUIをiOS6の頃から変更し、2015年にはiOS8?7?向けに変更しました。
@@ -76,7 +85,7 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 # History for UI Tests against Cookpad iOS App
 
-- github repositoryのグラフを載せる
+![](images/history_for_ui_tests.png)
 
 ^ 2014年の頃からUI Tests、特にAppiumを使った環境を作っていきました
 ^ 現在、すでに2017年になりますが、その当時からのツールを今も発展させながら使い続けています
@@ -90,7 +99,9 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 # kano-model based quality
 
-kano-modelを表示する
+![](images/kano_model_based_quality.png)
+
+https://en.wikipedia.org/wiki/Kano_model
 
 ^ 比較的見やすい品質モデルにkano-modelがあります。このモデルには当たり前品質を魅力的品質の2種類があります。
 ^ 日本では、この当たり前品質の要求として特に基本的な機能が動作すること、例えば画面遷移ではクラッシュしないことなどの要求が高いです。
@@ -110,6 +121,11 @@ Diachronic Quality
 
 # Change, Change, Change...
 
+- environment
+  - iOS5 => iOS6 => iOS7 => iOS8 => iOS9 => iOS10...
+    - include changeing GUIs
+  - Objective-C => Swift
+
 ^ iOS周りの変化を説明
 ^ iOS6, 7, 8...
 ^ Objective-C, Swift!!
@@ -117,13 +133,14 @@ Diachronic Quality
 
 # Changes in Cookpad
 
-^ この間、この時代に沿ったり、Cookpad独自に変化しようとするように、cookpadにおける"変化"を詳しく見てみると、このように細かく、頻繁に変化しています
-
-# Cookpad's release cycle
-- 2week ~ 1month release sycle
+- サービス拡大のための挑戦
+    - Change UIs, features...
+- 2week ~ 1month release cycle
 - Change UI / Code many times since Apple require us change
 
-^ ところで、その間、私たちのアプリは、2週間〜1か月のスパンでここ2年間リリースを続けています。
+^ この間、この時代に沿ったり、Cookpad独自に変化しようとするように、cookpadにおける"変化"を詳しく見てみると、このように細かく、頻繁に変化しています
+^ その間、私たちのアプリは、2週間〜1か月のスパンでここ2年間リリースを続けています。
+^ 最近では、1回のリリースには5,000~10,000行程度の変更が加わりながらリリースされています。
 
 # ここまでで話したこと
 
@@ -133,32 +150,55 @@ Diachronic Quality
 
 ^ 10分くらいにしておきたい
 
-# Strategy for Re-Engineering
+# Tasting tests :yummy:
+
+# Re-Engineeringに足を踏み込むとき
+
+何か良い画像を埋め込みたい
 
 ^ クックパッドアプリは、今ではシェアを多く持っていますが、以前は試行錯誤が中心でした。
 ^ そこから、UIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
 ^ そのため、re-writeやrefactorを推し進め、継続して開発を続ける体制を作る必要がありました
 ^ そう、re-engineeringを進める段階になっていました <= 微妙かも...
 
+# jump into Re-Engineering
+
+> Writing unit tests before refactoring is sometimes impossible and often pointless.
+
+^ rewriteやリファクタを推し進める時、高頻度でテストが行われ、それを元に正しいことを確認し続ける環境を持つことは最近では必要だと知っている人が多いで賞。
+
+# Strategy for Re-Engineering
+
 # unit tests for Re-Engineering
 
-> unit testが大事であることは、疑いようはない
-> Unit tests are not a silver bullet. <= re-engineeringから引用する
+> Most developers would agree that unit test should be fully automated,
 
 ^ 最近出たre-engineeringにあるように、現在だと単体テストを書くとか、そこらへんは必要だという認識を多くの人が持っていることと思います。
 ^ また、Swiftだとtypeをしっかり使うことやunit testやそのCI環境が基軸となることは最近では多くの人が納得することでしょう。
 ^ ただ、5年とか前のアプリにおいて、十分にテストコードが書かれたものは少ないのではないでしょうか。
+
+# Unit tests are not a silver bullet
+
+> but the level of automation for other kind of tests(such as integration tests) is often much lower.
 
 # UI Test to support Re-Engineering
 
 > One area that cries out for automation is UI testing.
 > (4.3.2. Regression testing without unit tests)
 
-^ また、Re-Engineeringにはこのようなことも書かれているように、まさしく、UI Testこそ、変化に追従し、変化に追従するに当たって大事な要素になります。
+^ Re-Engineeringにはこのようなことも書かれているように、まさしく、UI Testこそ、変化に追従し、変化に追従するに当たって大事な要素になります。
 ^ UIやシナリオの設計(体験の設計)が差別的な競争力になるモバイルアプリではなお。
 ^ iOSでは、最近のSwiftへの置き換えも進めるように、UIレベル、つまりユーザが目にする範囲において確実に動作することが確認出来る環境を持っていることは大きな優位性になります。
 ^ 社内で働くiOSエンジニアの多くも、自分の実装によって自分の想定していない不具合も表示されるものは特に、検出される可能性が高いことは心理的安全性にもつながります。
 ^ 実装の書き換えに怯えなくて良くなりますね。
+
+# Mobile app tend to be flipped pyramid easily
+
+![](images/based_on_test_pyramid_mobile.png)
+- http://www.utest.com/articles/mobile-test-pyramid
+
+^ モバイルアプリはこのように理想的なピラミッドとは逆のピラミッドになりやすい
+^ そのため、automated ui testの、特にViewに対するものまでちゃんとよういすることが短時間で最低限のチェックを回すには必要になる。
 
 # Automated UI Test with Appium from 2014
 
@@ -177,7 +217,13 @@ Diachronic Quality
 
 link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 
-# Image Diff / network diff
+# Test Scenarios
+
+^ 日本語ですが、
+
+# Go ahead
+
+- Image Diff / network diff
 
 ^ 途中から、このようにimage diffも撮るようになりました。これは結果のジャッジメントを自動化することのほか、デザイナーへのフィードバックとしても利用されます。
 
@@ -186,41 +232,33 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ このような環境を作ることにより、開発者が自信を持って内部コードを書き換え、変更することができるようになります。
 ^ 複雑な仕組みを書き換えながらも、そのユーザへの影響などはUI Testにより8割、9割はカバーされる状態になります。
 
-# Re-Engineering - jump up to Swift
+# Swiftを入れていく
 
-^ 私たちのアプリでは、ここ最近Swiftへの置き換えが進んでいます。
+![](images/swift_coverage.png)
+
+^ ここ最近では、機能の追加や変更に加えて私たちのアプリでは、ここ最近Swiftへの置き換えが進んでいます。
 ^ この書き換えに対しても、このUIに対する自動化されたテストは大いに役立ちます。
-^ 加えて、途中から私たちがリクエストのキャプチャも計測し始めたので、外から見たアプリの振る舞いに対しては、View/Networkの2つの面から自動化されたテストである程度カバーできる状態になっていました
+^ サービスとして取得している体験を損ねることなく、内部ロジックをSwiftへ書き換えていく。
+^ そのようなことを、image diffやnetwork request captureも含めて支援しています。
 
-# Wrap up
+# More faster and stable
+
+^ モバイルアプリのテスト環境はまだ変化を続けています。
+^ XCUITestの登場やEalrGreyといったものも出てきています。
+^ FBSimulatorControllerやWebDriverAgentなど。
+^ 多くのとても有用なツールが少し前から顔を出し、成長して行っています。
+^ Swiftなども変化の波に当面の間のるでしょう。
+
+- 私たちも、より早く安定したautomation testを作りたい
+
+# まとめ
 
 - 自動化されたUI Testsのアーキテクチャと、それらはRe-Engineeringを支えること
 - include UI Testsはデザイナも含んだフィードバックサイクルを回す手助けとなる
 - 環境の変化の大きなモバイルアプリにおいては、どの程度細かくテストを書き、どの程度テストを書かずにUI Testsに任せるかが大事になる
 
-^ どこに大きく変化が訪れ、それに対してどのように対策していくか。
-^ 私たちの場合は、長く続くサービス、変化を続けるアプリや内部コードに対して、UIテストがもたらす恩恵をお話ししました。
-
-# Tips for UI Tests
-
-^ ここまでコードの話をしませんでしたが、tipsを少し。
-^ 皆さんもお使いかもしれませんが、表示の変化に追従するためにaccessibilityIdentifierをうまく使いましょう。
-^ Xcode8からはStoryboardにおいても簡単に設定できるようになりました。
-^ コードへの知見がなくとも、Storybardを触ることができるのであれば用意にidを付与できます。
-^ Viewが置き換わらない限り、座標の変更程度であればaccessibilityIdentifierを中心に記述されたUIテストは壊れることはあまりありません。
-
-# manual testers
-
-^ ちなみに、私たちの組織にはマニュアルテストだけを行う人はいません。
-^ checkするためのテストは多くを自動化し、人の想像力によってtestする領域を増やそうとしています。
-
-# future
-
-^ モバイルアプリのテスト環境はまだ変化を続けています。
-^ XCUITestの登場やEalrGrey
-^ FBSimulatorControllerやWebDriverAgentなど。
-^ 多くのとても有用なツールが少し前から顔を出し、成長して行っています。
-^ Swiftなども変化の波に当面の間のるでしょう。
+^ ここまでで、私たちがre-engineeringを行っていくまでに用意したUI Testsの話を味わってみました。
+^ また、最近ではそのre-engineeringはデザイナーと行ったチームみんなのへのフィードバックツールへとも役立っていること。
 
 # Thanks
 
