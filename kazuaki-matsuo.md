@@ -74,7 +74,7 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 ^ このように、見た目も変えながら、最近では中身も最近ではSwiftへと置き換えを進めています。<= もしかしたら、最近のSwiftのコードの%を載せるかも
 ^ ソースコードも順調に増え、今では10万行ものコードが存在します。
 
-# History for UI Tests
+# History for UI Tests against Cookpad iOS App
 
 - github repositoryのグラフを載せる
 
@@ -84,6 +84,8 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 # Quality in Japan
 
+- 日本列島の画像
+
 ^ 今回のiOSアプリが対象とする国は主には日本です。そこで、日本のアプリに対する見方を少し共有します。
 
 # kano-model based quality
@@ -91,19 +93,20 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 kano-modelを表示する
 
 ^ 比較的見やすい品質モデルにkano-modelがあります。このモデルには当たり前品質を魅力的品質の2種類があります。
-^ 日本では、この当たり前品質の要求が高く、特に基本的な機能が動作すること、例えば画面遷移ではクラッシュしないことなどの要求が高いです。
-^ 日本では、基本的な機能以外にも画面遷移の多くが不具合なく動く事が期待されることが多い。
-^ そういうことが当たり前、と感じる人が多い傾向にあるようです。(cookpadのレビューと不具合を参考にすると)
+^ 日本では、この当たり前品質の要求として特に基本的な機能が動作すること、例えば画面遷移ではクラッシュしないことなどの要求が高いです。
+^ そのため、そういうことが当たり前と感じる人が多い傾向にあるようです。(cookpadのレビューと不具合を参考にすると)
 
 - 何か参考資料持ってこれたらな...
 
-# Quality in Mobile
+# Quality in Mobile App
 
 Diachronic Quality
 
 ^ diachronic qualityという造語があります。
-^ これは、変わり続ける品質を説明するものです。言語学から影響を受けています。
+^ これは、変わり続ける品質を説明しようとしていることばです。言語学から影響を受けています。
 ^ モバイルアプリ、特にサービスとして提供しているアプリは時代の流れに合わせて変化が大きくなるので、この変化し続ける世界においても、先ほど挙げた日本のユーザが当たり前だと感じる明らかな不具合を減らす必要があります。
+
+メモ: ここは除いた方が良いかもしれない
 
 # Change, Change, Change...
 
@@ -120,24 +123,27 @@ Diachronic Quality
 - 2week ~ 1month release sycle
 - Change UI / Code many times since Apple require us change
 
-^ その間、私たちのアプリは、2週間〜1か月のスパンでここ2年間リリースを続けています。
+^ ところで、その間、私たちのアプリは、2週間〜1か月のスパンでここ2年間リリースを続けています。
 
 # ここまでで話したこと
 
 - Cookpadアプリの変化の遷移
 - 日本における、アプリの動作で基本的なものとして求められること
-- モバイルアプリは特に、変化し続けることが必要な品質
+- モバイルアプリは特に、変化し続けることが求められる環境にある
 
-# ビジネスへの挑戦からアプリの安定 - Re-Engineering
+^ 10分くらいにしておきたい
 
-サービスはビジネスへの挑戦の為に、試行錯誤します。 <= 試行錯誤の段階
+# Strategy for Re-Engineering
 
-^ ユーザ数、規模が大きくなるにつれて環境の整備やre-write/re-factorを行う必要が出てきました
+^ クックパッドアプリは、今ではシェアを多く持っていますが、以前は試行錯誤が中心でした。
+^ そこから、UIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
+^ そのため、re-writeやrefactorを推し進め、継続して開発を続ける体制を作る必要がありました
+^ そう、re-engineeringを進める段階になっていました <= 微妙かも...
 
-# Re-Write/Re-Factor - Re-Engineering
+# unit tests for Re-Engineering
 
 > unit testが大事であることは、疑いようはない
-> Unit tests are not a silver bullet.
+> Unit tests are not a silver bullet. <= re-engineeringから引用する
 
 ^ 最近出たre-engineeringにあるように、現在だと単体テストを書くとか、そこらへんは必要だという認識を多くの人が持っていることと思います。
 ^ また、Swiftだとtypeをしっかり使うことやunit testやそのCI環境が基軸となることは最近では多くの人が納得することでしょう。
@@ -171,11 +177,11 @@ Diachronic Quality
 
 link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 
-# Image Diff
+# Image Diff / network diff
 
 ^ 途中から、このようにimage diffも撮るようになりました。これは結果のジャッジメントを自動化することのほか、デザイナーへのフィードバックとしても利用されます。
 
-# Re-Engineering - re-write / re-factor withgout fear for developers
+# Re-Engineering - re-write / re-factor without fear for developers
 
 ^ このような環境を作ることにより、開発者が自信を持って内部コードを書き換え、変更することができるようになります。
 ^ 複雑な仕組みを書き換えながらも、そのユーザへの影響などはUI Testにより8割、9割はカバーされる状態になります。
