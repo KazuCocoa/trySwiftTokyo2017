@@ -232,7 +232,22 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 # Scenarios
 
 ```ruby
-例を載せる
+機能: 複数の条件に合致する検索を正しく行うことができる
+  背景:
+    前提 'iPhone' で試験を行う
+
+  シナリオアウトライン: ユーザは自分のログイン状態によって変化する検索結果を見ることができる
+    * <user_status> ユーザでログインする
+    * <search_words> と検索欄から検索する
+    * 私は '3' 回下側にスクロールする
+    * 画面に 'xxx' が表示されている
+
+    例:
+      | user_status | search_words  |
+      | 'ps'     | 'ヤシガニ'        |
+      | 'non-ps'     | '月食'            |
+      | 'guests'     | 'カワエビ'        |
+      | 'guest'     | 'テナガエビ'      |
 ```
 
 ^ 基本、シナリオレベルでは自然言語で、普段チームの人たちが使う言葉をベースにそうさを記述します。
@@ -257,9 +272,10 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ UIAutomationを使っていたころはiOSがXPathによる要素選択をサポートしていました
 ^ ただ、現在のXCUITestはそうではないため、
 
-# Go ahead
+# more 🌶️
 
-- Image Diff / network diff
+![](images/go_ahead_image_diff.png)
+![](images/go_ahead_request_cap.png)
 
 ^ 途中から、このようにimage diffも撮るようになりました。これは結果のジャッジメントを自動化することのほか、デザイナーへのフィードバックとしても利用されます。
 
