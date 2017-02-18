@@ -40,7 +40,7 @@
 ^ 実施するunit test/integration test/ui testの量がどのような関係にあると理想的か、ということを表した図です。
 ^ 多くの場合、unit testはメソッド単位のテスト、UI testがユーザの操作を模倣するような粒度での話になります。
 
-# How UI Tests support our product
+# Today's topic: How UI Tests support our development
 ^ どれだけUI Testが私たちの開発を支えたか
 
 ^ 今日はこの中でUI Testが私たちの何を支えたのか、をtastingしてみようと思います。
@@ -120,6 +120,7 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ diachronic qualityという造語があります。
 ^ これは、変わり続ける品質を説明しようとしていることばです。言語学から影響を受けています。
 ^ モバイルアプリ、特にサービスとして提供しているアプリは時代の流れに合わせて変化が大きくなるので、この変化し続ける世界においても、先ほど挙げた日本のユーザが当たり前だと感じる明らかな不具合を減らす必要があります。
+^ 一方で、世界的に見ても時代が進むにつれてモバイルアプリに対する基本的な動作に対する求める品質は高くなっているように見えます。
 
 # Change, Change, Change...
 
@@ -165,11 +166,11 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ 現在、すでに2017年になりますが、その当時からのツールを今も発展させながら使い続けています。
 ^ この間、先ほどのiOSアプリの変化の歴史をこの自動化されたテストによって支えてきました。
 
-# ここまでUI Testになぜ力を入れていたか🤔
+# なぜここまでUI Testになぜ力を入れていたか🤔
 
-# Re-Engineering
+# Re-Engineeringを進める
 
-何か良い画像を埋め込みたい
+何か良い画像を埋め込みたい...
 
 ^ クックパッドアプリは、今ではシェアを多く持っていますが、以前は試行錯誤が中心でした。
 ^ そこから、UIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
@@ -181,11 +182,14 @@ https://en.wikipedia.org/wiki/Kano_model
 
 ^ rewriteやリファクタを推し進める時、高頻度でテストが行われ、それを元に正しいことを確認し続ける環境を持つことは最近では必要だと知っている人が多いでしょう
 ^ ただ、例えばunit testに近い、コードに近い領域をいきなりテストし始めることは難しいです
-^ 一方で、そのレベルのテストをCIとして実施できるようにしなければ、高頻度の修正を将来に渡って実施し続けることは難しい
+^ どのようにアプリのアーキテクチャを構成するか、にも大きく依存してきます。
+^ 一方で、unit testのテストをCIとして実施できるようにしなければ、高頻度の修正を将来に渡って実施し続けることは難しい
 
 # Basic strategy for Re-Engineering
 
-そこで、まずはテスト対象のアプリを、内部、外部の2つの側面から見ます
+^ そこで、まずはテスト対象のアプリを、内部、外部の2つの側面から見ます
+^ 内部、とはユーザには見えないソースコードレベルの話です
+^ 外部、とはユーザに見えるようなUIが関わる領域の話です
 
 # 内部を変更できるようにするために、外部からカバーしていく
 
@@ -215,13 +219,14 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ 社内で働くiOSエンジニアの多くも、自分の実装によって自分の想定していない不具合も表示されるものは特に、検出される可能性が高いことは心理的安全性にもつながります。
 ^ 実装の書き換えに怯えなくて良くなりますね。
 
-# Test environment for Mobile app tend to be flipped pyramid easily
+# Test environment for Mobile apps tend to be flipped pyramid easily
 
 ![](images/based_on_test_pyramid_mobile.png)
 - http://www.utest.com/articles/mobile-test-pyramid
 
-^ モバイルアプリはこのように理想的なピラミッドとは逆のピラミッドになりやすい
-^ そのため、automated ui testの、特にViewに対するものまでちゃんとよういすることが短時間で最低限のチェックを回すには必要になる。
+^ ところで、モバイルアプリはこのように理想的なピラミッドとは逆のピラミッドになりやすいです
+^ そのため、Re-Engineeringを進めるための、特にUIに対するテストを自動化していくことは、理想的なピラミッドに近づけるにあたり大きな要素になります
+^ そうすることで、様々なバリエーションの解像度やOSバリエーションに対するUIレベルのテストを、手動で網羅するよりも短時間で評価できます
 
 # implement the strategy
 
@@ -257,10 +262,10 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 
     例:
       | user_status | search_words  |
-      | 'ps'     | 'ヤシガニ'        |
-      | 'non-ps'     | '月食'            |
-      | 'guests'     | 'カワエビ'        |
-      | 'guest'     | 'テナガエビ'      |
+      | 'ps'        | 'ヤシガニ'     |
+      | 'non-ps'    | '月食'        |
+      | 'guests'    | 'カワエビ'     |
+      | 'guest'     | 'テナガエビ'   |
 ```
 
 ^ 基本、シナリオレベルでは自然言語で、普段チームの人たちが使う言葉をベースにそうさを記述します。
@@ -273,22 +278,31 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ また、人が繰り返しやるには大変な長いシナリオを実施させたりもします。
 ^ 例えばクライアントのキャッシュを超えた時間を待った後、ちゃんとViewが再描画されるか、というものも確認することがあります。
 
+# Seasoning
+^ 味付け
+
+このUIテストを構築する上で必要な味付けをいくつか共有します
+
 # Tips1: 内部コードから依存性を減らす
 
 ^ この手のUI Testで重要なのは、実装の内部コードの構造に強く依存しないようにすることです。
 ^ 依存性を増やすと、そのぶん内部コードの変更に対して手を加える必要があります。
+^ 内部コードに依存したテストは良い面もありますが、今回の文脈において必要としているUI Testには適切ではありません
 
 # Tips2: 環境変数によりテスト対象の挙動を帰る
 ^ 私たちはiOS Simulatorを主に使います。実機上では実行スピードの関係上、ほとんど使いません。
 ^ その時、スキーマを変えずとも何らかの挙動を制御したい場合、環境変数を指定します。
-^ xcodebuildの話になるのですが、
+^ xcodebuildの話になるのですが、環境変数により挙動を変更することができると、設定によって必要以上にスキーマを増やすことをしなくて済みます
 
-# Tips3: xxx
-
-- find elements with accessibilityIdentifier
+# Tips3: set accessibilityIdentifier with code/storyboard
 
 ^ UIAutomationを使っていたころはiOSがXPathによる要素選択をサポートしていました
-^ ただ、現在のXCUITestはそうではないため、
+^ Xcode7からは、Storyboard上でaccessibilityIdentifierを付与することもできるので、iOS8以上をサポートする場合はStoryboard上からViewだけに依存した形で管理、その結果を例えばCSVの一覧として管理すると良いでしょう。差分を追いやすくしておくと、変更に追従しやすくなります。
+
+# Tips4: 要素のタップベースでシナリオを書く
+
+^ iOSのフレームワーク側の都合もあるのですが、XCUITestではある種のスクロールが不安定になります。そのため、そのような不安定な箇所を減らすことで、テスト自体の安定性をある程度確保していきます。
+^ これはどこまでautomationに寄せるかという話なので、時と場合に依存しますね。
 
 # more 🌶️
 
@@ -300,7 +314,7 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 # Re-Engineering - re-write / re-factor without fear for developers
 
 ^ このような環境を作ることにより、開発者が自信を持って内部コードを書き換え、変更することができるようになります。
-^ 複雑な仕組みを書き換えながらも、そのユーザへの影響などはUI Testにより8割、9割はカバーされる状態になります。
+^ 複雑な仕組みを書き換えながらも、そのユーザへの影響などはUI Testにより8割、9割はカバーされる状態にしてきました。1年くらいの間はシナリオの調整を中心に行っている感じです。
 
 # introduce Swift
 
