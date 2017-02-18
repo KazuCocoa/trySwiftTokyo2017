@@ -175,11 +175,22 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ そこから、UIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
 ^ そのため、re-writeやrefactorを推し進め、継続して開発を続ける体制を作る必要がありました
 
-# Basic strategy for Re-Engineering
+# どこからテストを拡充していくか?
 
 > Writing unit tests before refactoring is sometimes impossible and often pointless.
 
 ^ rewriteやリファクタを推し進める時、高頻度でテストが行われ、それを元に正しいことを確認し続ける環境を持つことは最近では必要だと知っている人が多いでしょう
+^ ただ、例えばunit testに近い、コードに近い領域をいきなりテストし始めることは難しいです
+^ 一方で、そのレベルのテストをCIとして実施できるようにしなければ、高頻度の修正を将来に渡って実施し続けることは難しい
+
+# Basic strategy for Re-Engineering
+
+そこで、まずはテスト対象のアプリを、内部、外部の2つの側面から見ます
+
+# 内部を変更できるようにするために、外部からカバーしていく
+
+1. コードの内部を変更することができるように、UIの、コードとは独立したところでテストを用意する
+2. そのレベルで動作を確認できるようにしながら、内部コードを変更できるようにしていく
 
 # Unit tests for Re-Engineering
 
@@ -211,6 +222,8 @@ https://en.wikipedia.org/wiki/Kano_model
 
 ^ モバイルアプリはこのように理想的なピラミッドとは逆のピラミッドになりやすい
 ^ そのため、automated ui testの、特にViewに対するものまでちゃんとよういすることが短時間で最低限のチェックを回すには必要になる。
+
+# implement the strategy
 
 # Automated UI Test with Appium from 2014
 
