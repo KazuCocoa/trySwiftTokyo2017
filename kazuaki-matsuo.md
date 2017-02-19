@@ -50,7 +50,7 @@
 # テストの話はテスト対象をのけ者にはできない 🙅
 
 ^ ツール以上のテストの話をする時、そのテスト対象となる製品の話をのけ者にすることはできません。
-^ そのため、少し私の属しているCookpadについて話し、今回テスト対象となるiOSアプリがどんなものかを味わってみます。
+^ そのため、少しCookpadについて話し、今回テスト対象となるiOSアプリがどんなものかを味わってみます。
 
 # What is Cookpad?
 
@@ -61,7 +61,6 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 ^ Cookpadはレシピ共有サービスを提供しています。始まりはWebサービスからでした。
 ^ 現在は日本向けのものと、日本以外に向けたものを提供しています。これは、Webサービスの成熟度の違いからきていますが、いずれも同じcookpadです。
 ^ 最近では海外でもシェアを広げ、simularweb.comではfoodカテゴリで最大のものとなっています。
-^ アプリはiOS/Androidともに出しています。
 
 # Cookpad for iOS(Japan and Global)
 
@@ -71,12 +70,6 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 ^ クックパッドの主なiOSアプリには2種類あります。それは日本向けのアプリと、日本以外に向けたアプリです。
 ^ 国外からいらっしゃった方は、この海外向けのものをよく見るとおもいます。
 ^ 今日は、この日本向けのアプリを対象に話します。
-
-# Cookpad for iOS(Global)
-
-![](images/cookpad_for_ios_global.png)
-
-^ 国外からいらっしゃった方は、この海外向けのものをよく見るかもしれません。
 
 # Cookpad for iOS(Japan)
 
@@ -299,7 +292,13 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ UIAutomationを使っていたころはiOSがXPathによる要素選択をサポートしていました
 ^ Xcode7からは、Storyboard上でaccessibilityIdentifierを付与することもできるので、iOS8以上をサポートする場合はStoryboard上からViewだけに依存した形で管理、その結果を例えばCSVの一覧として管理すると良いでしょう。差分を追いやすくしておくと、変更に追従しやすくなります。
 
-# Tips4: 要素のタップベースでシナリオを書く
+# tips4: データの境界値は網羅しない
+
+^ なんらかの入力値のバリエーション網羅は、極力unit testに違い側で行うべきです。
+^ 無数(a bunch of)の入力パターン全てをUI testで確認することは時間がかかるので避ける必要があります。
+^ はじめのうちはui testで用意しても、refactorを続け、unit testが増えていくにつれて削除することは必要です。
+
+# Tips5: 要素のタップベースでシナリオを書く
 
 ^ iOSのフレームワーク側の都合もあるのですが、XCUITestではある種のスクロールが不安定になります。そのため、そのような不安定な箇所を減らすことで、テスト自体の安定性をある程度確保していきます。
 ^ これはどこまでautomationに寄せるかという話なので、時と場合に依存しますね。
