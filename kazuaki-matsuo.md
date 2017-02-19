@@ -90,15 +90,7 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 ^ 見た目も変えるのですが、例えば中身もSwiftへと置き換えを進めているように多くのre-write/refactorをコードレベルでも加えています。
 ^ ソースコードも順調に増え、今では10万行ものコードが存在します。
 
-# Quality in Japan market
-
-![](images/quality_in_japan_.png)
-
-^ テスト対象となるアプリが長年にわたり変化してきたことを共有しました。
-^ 次に、私たちの主なサービスの対象としていた日本市場の特徴をみてみます。
-^ 少し、日本のアプリに対する見方を少し共有します。
-
-# kano-model based quality
+# kano-model and Japan market
 
 ![](images/kano_model_based_quality.png)
 
@@ -113,19 +105,7 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ diachronic qualityという造語があります。
 ^ これは、変わり続ける品質を説明しようとしていることばです。言語学から影響を受けています。
 ^ モバイルアプリ、特にサービスとして提供しているアプリは時代の流れに合わせて変化が大きくなるので、この変化し続ける世界においても、先ほど挙げた日本のユーザが当たり前だと感じる明らかな不具合を減らす必要があります。
-^ 一方で、世界的に見ても時代が進むにつれてモバイルアプリに対する基本的な動作に対する求める品質は高くなっているように見えます。
-
-# Change, Change, Change...
-
-- environment
-  - iOS5 => iOS6 => iOS7 => iOS8 => iOS9 => iOS10...
-    - include changeing GUIs
-  - Objective-C => Swift
-
-^ iOS周りの変化を説明
-^ iOS6, 7, 8...
-^ Objective-C, Swift!!
-^ プラットフォームの変化に合わせて、時代によって求められるQualtyも変化していってます
+^ 例えば、iOSだとOSの変化やUIの変化、実装言語の変化といった品質に関わる要素が毎年といっていいほどに変わります。
 
 # Changes in Cookpad
 
@@ -156,7 +136,6 @@ https://en.wikipedia.org/wiki/Kano_model
 
 ^ このgithubリポジトリは、automated ui testのツール群の成長の軌跡です。
 ^ 2014年の頃からUI Tests、特にAppiumを使った環境を作っていきました。
-^ 現在、すでに2017年になりますが、その当時からのツールを今も発展させながら使い続けています。
 ^ この間、先ほどのiOSアプリの変化の歴史をこの自動化されたテストによって支えてきました。
 
 # なぜここまでUI Testになぜ力を入れていたか🤔
@@ -324,7 +303,7 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ サービスとして取得している体験を損ねることなく、内部ロジックをSwiftへ書き換えていく。
 ^ そのようなことを、image diffやnetwork request captureも含めて支援しています。
 
-# More faster and stable
+# faster and more stable
 
 ^ モバイルアプリのテスト環境はまだ変化を続けています。
 ^ XCUITestの登場やEalrGreyといったものも出てきています。

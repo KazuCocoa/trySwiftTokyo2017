@@ -84,6 +84,117 @@ In addition, the app changes not only UI but also internal logic, implementatins
 (ここ、いまいち)
 Sorce code also have grown and it is around 100 thousand lines except for comment, balnk lines for now.
 
-# Quality in Japan market
+# Kano-model and Japan market
+
+![](images/kano_model_based_quality.png)
+
+https://en.wikipedia.org/wiki/Kano_model
+
+kano-model is one of famous model to explain about quality.
+There is two quality. One is Must-be Quality and another is Attractive Quality.
+Japan market's must-be quality is high because they require crash-free app as must-be quality in many case.
+
+# diachronic quality in mobile app
+
+Mobile app's environment changes frequently.
+OS version change every year.
+UI and design also change a few years cycle.
+Required quality by market also have changed.
+
+# Changes in Cookpad
+
+- release cycle: 2week ~ 1months
+- change ui / code
+
+In this period, Cookpad also have changed to catch up with the cycle.
+Release our app every two weeks or one months to challenge our service and UI.
+Recently, we changes source code around 5,000 ~ 10,000 lines per release.
+
+# What I talk for now
+
+History of Cookpad iOS app and its changes
+diachronic quality in mobile
+
+# Tasting tests😋
+
+I start talking UI Test what I've done against the environment.
+
+# History for UI Tests against Cookpad iOS App
+
+![](images/history_for_ui_tests.png)
+
+This repository show a growth of UI tests I implemented at Cookpad.
+I've developed the environment since 2014.
+I've supported the changes with this ui tests.
+
+# Re-Engineeringを進める
+
+# どこからテストを拡充していくか?
 
 
+# Why have we implemented this UI tests?
+
+
+# Basic strategy for Re-Engineering
+
+
+# 内部を変更できるようにするために、外部からカバーしていく
+
+# Unit tests for Re-Engineering
+
+
+# Unit tests are not a silver bullet
+
+
+# UI Test to support Re-Engineering
+
+
+# Test environment for Mobile apps tend to be flipped pyramid easily
+
+# implement the strategy
+
+# Automated UI Test with Appium from 2014
+
+
+# Architecture for UI Tests
+
+
+# Scenarios
+
+
+# what kind of scenarios do we describe
+
+
+# Seasoning
+
+
+# Tips1: 内部コードから依存性を減らす
+
+
+# Tips2: 環境変数によりテスト対象の挙動を帰る
+
+
+# Tips3: set accessibilityIdentifier with code/storyboard
+
+
+# tips4: データの境界値は網羅しない
+
+
+# Tips5: 要素のタップベースでシナリオを書く
+
+
+# more 🌶️
+
+
+# Re-Engineering - re-write / re-factor without fear for developers
+
+
+# introduce Swift
+
+
+# faster and more stable
+
+
+# Conclusion
+
+# Thanks
