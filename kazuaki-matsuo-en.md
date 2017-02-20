@@ -1,19 +1,19 @@
 # Tasting tests at Cookpad
 @Kazu_cocoa
 
-Hello everyone.
+Hello, everyone.
 I'm Kazu.
-Now, I'm so happy and exciting to be able to talk for many Swift and iOS develpers.
+Now, I'm so happy and excited to be able to talk for many Swift and iOS developers.
 
-Today's my topic is associated with "TEST" since I'm test engineer at Cookpad.
+Today's my topic is associated with "TEST" since I'm a test engineer at Cookpad.
 "Tasting" used in my title means taste food stuff because my company is regarding with food.
 
 # About me
 
 First, I introduce myself.
-I'm kazuaki matsuo and working at Cookpad as test engineer.
-I've tried test automation for Android and iOS, and improved development processes and other many role to imprpve quality.
-So, "Software Engineer in Quality" might be more suitable name than test engineer in my company, I think.
+I'm Kazuaki Matsuo and working at Cookpad as a test engineer.
+I've tried test automation for Android and iOS and improved development processes and other many roles to improve several qualities.
+So, "Software Engineer in Quality" might be more suitable name than test engineer to explain me in my company, I think.
 
 I use some languages in my work such as swift, ruby, java for android and elixir.
 Recently, I've maintained ruby binding client library for Appium.
@@ -24,24 +24,24 @@ go ahead
 # A bunch of topics in "TEST"
 Even we use the word "TEST", it has various topics.
 
-For example, the word has categories such as usability test and performance test, and has test level such as unit test and integration test.
-Today, I pick up a test pyramid which has three layers, unit test, integration test and ui test for automated test and manual test.
+For example, the word has categories such as usability test and performance test and has test level such as unit test and integration test.
+Today, I pick up a test pyramid which has three layers, unit test, integration test and UI test for automated test. In addition the pyramid has manual test outside of the pyramid.
 
 # test pyramid
-This pyramid is one of famous figure for test automation.
-The pyramid means ideal relationship and amount between unit tests, integration tests and UI tests in development.
-Unit tests deal with testing logic in code level and ui tests focus on simulate user behaviours against test target app.
+The pyramid is one of a famous diagram for test automation.
+This show ideal relationship and amount for unit tests, integration tests and UI tests in development.
+Unit tests deal with testing logic in code level and UI tests focus on simulate user behaviours against test target app.
+Unit tests are small and fast but UI tests aren't.
 
 # How UI Tests support our development
-Today, you can tast UI tests and its our story.
-I'm happy if anyone has motivation to try ui tests after my talk.
+Today, you can taste UI tests and our story.
+I'm happy if anyone gets the motivation to try UI tests after my talk.
+Meanwhile, I don't talk about unit level tests such as mock, protocol oriented..
 
-Meanwhile, I don't talk topick about unit test level.
-
-# We should know about the test target if we tast tests
+# We should know about the test target if we try to tests stuff
 (いまいち...)
 
-We should learn test target if we tast test not only about tools but also strategies.
+We should learn test target if we try to understand and taste some tests not only about tools but also strategies.
 So, I'll explain about Cookpad and its iOS app at first to help you understand the following topics.
 
 # What is Cookpad?
@@ -49,25 +49,25 @@ So, I'll explain about Cookpad and its iOS app at first to help you understand t
 ![](images/what_is_cookpad_world.png)
 
 Cookpad is one of famous recipe sharing service in the world.
-We have two kind of the service, for Japan and for rest of the world for now.
-According to the similarweb.com, Cookpad is the largest site in food category.
+We have two kinds of the service, for Japan and for rest of the world for now.
+According to the similarweb.com, Cookpad is the largest site in the food category.
 
 # Cookpad for iOS(Japan and Global)
 
 ![](images/cookpad_for_ios_japan.png)
 ![](images/cookpad_for_ios_global.png)
 
-We also have two kind of iOS applications.
+We also have two kinds of iOS applications for Cookpad.
 One is for Japan and another is for rest of the world.
-They are difference service growth level, so we have't merge them yet.
+They are difference service growth level, so we haven't merged them yet.
 
-Anyone comes from out of Japan, can see global app.
+If anyone comes from out of Japan, you can see global app.
 
 # Cookpad for iOS(Japan)
 
 ![](images/cookpad_for_ios_global.png)
 
-I focus on japanese app today.
+I focus on the Japanese app today.
 
 # History for Cookpad iOS App
 
@@ -77,12 +77,11 @@ I focus on japanese app today.
 ![](images/history_for_cookpad_ios_image4.png)
 ![](images/history_for_cookpad_ios_graph.png)
 
-The cookpad app have grown for around 5 years.
-I attched some screenshots to be able to check the change.
-The app changed UI component/features many times during the period.
-In addition, the app changes not only UI but also internal logic, implementatins.
-(ここ、いまいち)
-Sorce code also have grown and it is around 100 thousand lines except for comment, balnk lines for now.
+The cookpad app has grown for around 5 years.
+I attached some screenshots to be able to check the growth and the changes.
+The app changed UI component, add or delete any features or re-write/refactor implementations during the period.
+
+The production code also has grown and it is around 100 thousand lines except for comment, blank and new lines for now.
 
 # Kano-model and Japan market
 
@@ -90,30 +89,32 @@ Sorce code also have grown and it is around 100 thousand lines except for commen
 
 https://en.wikipedia.org/wiki/Kano_model
 
-kano-model is one of famous model to explain about quality.
-There is two quality. One is Must-be Quality and another is Attractive Quality.
-Japan market's must-be quality is high because they require crash-free app as must-be quality in many case.
+kano-model is one of the famous models to explain about quality.
+There is two main quality. One is Must-be Quality and another is Attractive Quality.
+Must-be quality in Japan is high because they require crash-free app as must-be quality in many cases. It is not attractive for them.
 
 # diachronic quality in mobile app
 
-Mobile app's environment changes frequently.
-OS version change every year.
+Mobile app's environment changes frequently and OS version change every year.
 UI and design also change a few years cycle.
-Required quality by market also have changed.
+Required quality by market also has changed.
+
+Recently, I sometimes address as diachronic quality like this movement.
+This name comes from linguistics.
 
 # Changes in Cookpad
 
 - release cycle: 2week ~ 1months
 - change ui / code
 
-In this period, Cookpad also have changed to catch up with the cycle.
-Release our app every two weeks or one months to challenge our service and UI.
-Recently, we changes source code around 5,000 ~ 10,000 lines per release.
+In this period, Cookpad also has changed to catch up with the cycle.
+Release our app every two weeks or one month to challenge our service and UIs for the end users.
+Recently, we change source code around 5,000 ~ 10,000 lines per release.
 
 # summary
 
-History of Cookpad iOS app and its changes
-diachronic quality in mobile
+Histories of Cookpad iOS app and its changes.
+diachronic quality in mobile.
 
 # Tasting tests😋
 
@@ -123,16 +124,16 @@ I start talking UI Test what I've done for the environment.
 
 ![](images/history_for_ui_tests.png)
 
-This repository show a growth of UI tests I implemented at Cookpad.
+This repository shows a growth of UI tests I implemented at Cookpad.
 I've developed the environment since 2014.
-I've supported the changes with this ui tests.
+I've supported the changes with this kinds of UI tests.
 
 # Why have we implemented this UI tests?
 
 # Re-Engineering
 
-Start tasting tests to re-egnineering.
-Especially, I talk about refactor/re-write code.
+Start tasting tests to re-engineering.
+Especially, I talk about how to step into re-write/refactor code.
 
 # Should we taste from?
 
@@ -140,10 +141,12 @@ Especially, I talk about refactor/re-write code.
 
 According to the re-engineering, the quotation is described.
 it is true since we can't check behaviour without tests.
-The most of developers may agree with re-write/refactor features without tests lead unexpected broken stuff.
+The most of the developers may agree with re-write/refactor features without tests lead unexpected broken stuff.
 BTW, to make the target app testable, we should consider architecture for the app and other many things.
 
 On the other hand, without CI environment, it is difficult to iterate development cycle quickly without tests.
+
+-----ここまで-----
 
 # Basic strategy for Re-Engineering
 
