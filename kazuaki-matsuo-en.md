@@ -28,6 +28,9 @@ For example, the word has categories such as usability test and performance test
 Today, I pick up a test pyramid which has three layers, unit test, integration test and UI test for automated test. In addition the pyramid has manual test outside of the pyramid.
 
 # test pyramid
+
+![](images/based_on_test_pyramid.png)
+
 The pyramid is one of a famous diagram for test automation.
 This show ideal relationship and amount for unit tests, integration tests and UI tests in development.
 Unit tests deal with testing logic in code level and UI tests focus on simulate user behaviours against test target app.
@@ -193,6 +196,8 @@ You can check various OS versions and resolutions without human resorces.
 This benefit also lead psychological safety for developers.
 
 # Test environment for Mobile apps tend to be flipped pyramid easily
+
+![](images/based_on_test_pyramid_mobile.png)
 
 I shown ideal test pyramid for test automation before.
 But in mobile context, it is easy to make it flipped.
