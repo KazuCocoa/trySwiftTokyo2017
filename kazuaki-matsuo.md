@@ -25,7 +25,6 @@
 
 # A bunch of topics in tests
 ^ 一言でテスト、といっても、様々なテーマがあります。
-^ Usually, "test" include a bunch of types.
 
 ^ 例えば、usability testやperformanceテストといったカテゴリの話があったり、unit test/integration testといったテストレベルの話であったり。
 ^ それらの中で、今日はテストピラミッドと呼ばれるunit testやintegration test、UI testと区分されるテーマに関してお話をします。
@@ -69,7 +68,6 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 ^ クックパッドの主なiOSアプリには2種類あります。それは日本向けのアプリと、日本以外に向けたアプリです。
 ^ 国外からいらっしゃった方は、この海外向けのものをよく見るとおもいます。
-^ 今日は、この日本向けのアプリを対象に話します。
 
 # Cookpad for iOS(Japan)
 
