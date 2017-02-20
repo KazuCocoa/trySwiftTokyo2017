@@ -134,79 +134,157 @@ I've supported the changes with this ui tests.
 Start tasting tests to re-egnineering.
 Especially, I talk about refactor/re-write code.
 
-# どこからテストを拡充していくか?
+# Should we taste from?
 
 > Writing unit tests before refactoring is sometimes impossible and often pointless.
+
+According to the re-engineering, the quotation is described.
+it is true since we can't check behaviour without tests.
+The most of developers may agree with re-write/refactor features without tests lead unexpected broken stuff.
+BTW, to make the target app testable, we should consider architecture for the app and other many things.
+
+On the other hand, without CI environment, it is difficult to iterate development cycle quickly without tests.
 
 # Basic strategy for Re-Engineering
 
   (internal) sorce code => |app| <= (externl) users
 
-Same as quality mode, we aproach the app from internal and external.
+In this case, we aproach to make the app testable from two aspect, internal and external.
 "Internal" means sorce code side.
 "external" means end-user and GUI side.
 
-# 内部を変更できるようにするために、外部からカバーしていく
+# Make checkable from external to internal
 
 Check if GUI/behaviour are broken from external.
 And re-write/refactor/implement new feature.
-developers continue to change code aggressive because if some feature broken, we can know the bug in gui level.
+Developers continue to change code aggressive because if some feature broken, we can know the bug in gui level.
 
 # Unit tests for Re-Engineering
 
+The re-engineering also describe the following quotation.
+
+> Most developers would agree that unit test should be fully automated,
+
+This also true, for most of developers, I think.
 
 # Unit tests are not a silver bullet
 
+> but the level of automation for other kind of tests(such as integration tests) is often much lower.
+
+This also.
 
 # UI Test to support Re-Engineering
 
+But....
+
+> One area that cries out for automation is UI testing.
+> (4.3.2. Regression testing without unit tests)
+
+So, UI tests take too many time and too many human resources in mobile in many case.
+Because test automation for mobile is difficult than we app.
+
+But, automated UI tests support re-engineering in many time.
+You can check most of views, screen transaction without crashes and so on, automatically.
+You can check various OS versions and resolutions without human resorces.
+
+This benefit also lead psychological safety for developers.
 
 # Test environment for Mobile apps tend to be flipped pyramid easily
+
+I shown ideal test pyramid for test automation before.
+But in mobile context, it is easy to make it flipped.
+Because checking UIs manually is easy than test automation but it block swift development cycle in the future.
 
 # implement the strategy
 
 # Automated UI Test with Appium from 2014
 
+So, I've tried to implement UI Test since 2014, I've joined cookpad.
+I run UI tests manually and implement automated test step by step.
+I've implemented it with Ruby :p
 
 # Architecture for UI Tests
 
+図にする
+|シナリオ| <=> ｜操作の実装｜ <=> internal libraries <=> ruby_lib(appium ruby binding) <=> Appium <=> iOS(UIAutomation/XCUITest) <=> Cookpad App
+
+Our architecture for automated test is like this.
+We separate some layer to isolate scenarios for users and source code for iOS framework.
+I'd like to independent scenarios from iOS related environment.
+Also, I'd like to independent implementations for iOS from user scenarios.
+
+Thus, we can decrease maintanance costs for user scenarios and changing iOS side.
+Separating the responsibility is used for developers, I think.
+
+<<追加>>
+iOS側が変化した時は、シナリオは変えず、internal librariesのところだけでiOSフレームワーク側の変更を吸収します
 
 # Scenarios
 
+This is example to describe scenarios.
+I implement scenarios with data driven testing with Turnip.
+Turnip is similar to Cucumber.
+This scenaro is close to end-user. So, I chose national language to describe test.
 
-# what kind of scenarios do we describe
-
+This scenario is not equal to test case which run by manually.
+I summarize and implement this avoid redundant scenarios.
 
 # Seasoning
 
 
 # Tips1: 内部コードから依存性を減らす
+このレベルのUI testで重要なことは、テスト対象となるアプリのViewの構造になるべく依存しないコードを書くことです。
+例えば、XPathのような以下のコードはアプリの構造が変化すしたりOSの更新によって頻繁に壊れます。
 
+```
+find_element :xpath, //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]
+```
 
-# Tips2: 環境変数によりテスト対象の挙動を帰る
+そのため、accessibilityをちゃんと付与したり、表示される文言を基準に実装します。
 
+```
+find_element :accessibility_id, "arbitrary identifier"
+```
 
-# Tips3: set accessibilityIdentifier with code/storyboard
+ちゃんと分離してテストコードを書くことで、iOSの環境が大きく変化した場合も多くのUIテストを壊すことなく、変化に追従できるようになる。
 
-
-# tips4: データの境界値は網羅しない
-
-
-# Tips5: 要素のタップベースでシナリオを書く
-
+# tips2: Don't run tests for all boundaries
+test for all boundaries is better to implement in unit test.
+because UI test is too slower than unit test.
+So, if we implement some boundaries in UI test side, it is better to move test from ui to unit and remove it from ui tests in the future.
 
 # more 🌶️
 
+To be advanced, we implement this library in the future.
+
+we also implement image diff to judge the result and feedback to designer.
+Designer can know the diff between previous version and new version quickly.
+This help check simple changes in views.
+
+
+And we also capture network traffic because we'd like to check logging request.
+Logging reqest is so important for service development.
 
 # Re-Engineering - re-write / re-factor without fear for developers
-
+Keeping this UI tests, developers re-write and refactor internal code and they introduce new test.
+If therir change broke some feature, UI tests can unclear the error because our tests cover around 80~90% screen transactions for now.
 
 # introduce Swift
-
+We start to introducing Swift a few months ago.
+Also in this case, UI tests help fearless changes for developers.
 
 # faster and more stable
-
+Current UI tests is enough for current our development process for now.
+But our team will bigger than now in the future.
+So, I'll introduce alternative tools such as XCUITest or EarlGrey for UI tests parcially.
+I think that we continue to use both Appium and EarlGrey but we separate them by responsibilities.
 
 # Conclusion
+I talked about history of cookpad and how try to re-engineer the big app with UI tests.
+UI tests need to selarate responsibility from product code to catch up with some changes painless.
 
 # Thanks
+Thanks for listening my talk.
+And our co-workers.
+今日の話は、チーム全体として動かないとうまくいかないものだった。
+

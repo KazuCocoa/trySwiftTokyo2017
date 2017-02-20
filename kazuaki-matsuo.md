@@ -128,7 +128,7 @@ https://en.wikipedia.org/wiki/Kano_model
 
 ^ では、この環境の中で行ってきたUI Testの話をしていきたいと思います。
 
-# History for UI Tests against Cookpad iOS App
+# History for UI Tests for Cookpad iOS App
 
 ![](images/history_for_ui_tests.png)
 
@@ -142,17 +142,15 @@ https://en.wikipedia.org/wiki/Kano_model
 
 何か良い画像を埋め込みたい...
 
-^ クックパッドアプリは、今ではシェアを多く持っていますが、以前は試行錯誤が中心でした。
-^ そこから、UIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
-^ そのため、re-writeやrefactorを推し進め、継続して開発を続ける体制を作る必要がありました
+^ クックパッドはシェアが広くなるとUIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
+^ そのため、re-writeやrefactorを推し進め、継続して開発を続ける体制を作る必要が出てきていました。
 
-# どこからテストを拡充していくか?
+# どこから手をつけるか?
 
 > Writing unit tests before refactoring is sometimes impossible and often pointless.
 
 ^ rewriteやリファクタを推し進める時、高頻度でテストが行われ、それを元に正しいことを確認し続ける環境を持つことは最近では必要だと知っている人が多いでしょう
-^ ただ、例えば何も用意していない状態でunit testといったテストコードを書き始めることは難しいです。
-^ アーキテクチャも関係してきます。
+^ ただ、例えば何も用意していない状態でunit testといったテストコードを書き始めることは難しいです。アーキテクチャも関係してきます。
 ^ 一方で、unit testのテストをCIとして実施できるようにしなければ、高頻度の修正を将来に渡って実施し続けることは難しくなります。
 
 # Basic strategy for Re-Engineering
@@ -170,7 +168,7 @@ https://en.wikipedia.org/wiki/Kano_model
 
 > Most developers would agree that unit test should be fully automated,
 
-^ 最近出たre-engineeringにあるように、現在だと単体テストを書くとか、そこらへんは必要だという認識を多くの人が持っていることと思います。
+^ re-engineeringにあるように、現在だと単体テストを書くとか、そこらへんは必要だという認識を多くの人が持っていることと思います。
 ^ また、Swiftだとtypeをしっかり使うことやunit testやそのCI環境が基軸となることは最近では多くの人が納得することでしょう。
 ^ ただ、5年とか前のアプリにおいて、十分にテストコードが書かれたものは少ないのではないでしょうか。
 
@@ -211,9 +209,10 @@ https://en.wikipedia.org/wiki/Kano_model
 |シナリオ| <=> ｜操作の実装｜ <=> internal libraries <=> ruby_lib <=> Appium <=> Cookpad App
 
 ^ このUIテストの大きなアーキテクチャはこのようになっています。
-^ このおおまかな形は2014年から変わることなく続いています。
-^ これは、クックパッドアプリとしての独自ドメインであるシナリオと、AppiumやiOSの環境といった実際の環境を分離している状態です。
-^ Webアプリに触れたことがある人はわかるかもしれませんが、Cucumberを使う時の構造に似ていますね。また、責務の分離はエンジニアに取っても馴染みの深いものかと思います。
+^ このようにユーザのシナリオと実際のユーザ操作を分けています。
+^ ユーザシナリオは実際のiOS環境に関する実装から独立出来ます。
+^ iOS環境はユーザシナリオから独立します。
+^ こうすることで、ユーザシナリオとiOS側の変更の保守コストを低くしました。
 
 link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 
@@ -242,11 +241,8 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ これは、ユーザを模倣するシナリオを書く時にソースコードレベルの細かなことを書かないようにするためです。
 ^ そのような細かなものは、unit testなどに任せましょう。
 
-# what kind of scenarios do we describe
 ^ シナリオを書く際、人を模倣すると言いましたが例えばspreadsheetなどで管理するようなテストケースをそのままシナリオに落とし込むわけではありません。
 ^ iOSアプリのテストでは、simulaltorの初期化や起動などに時間が必要なので、ある程度のシナリオをまとめて実行するようにしたりします。
-^ また、人が繰り返しやるには大変な長いシナリオを実施させたりもします。
-^ 例えばクライアントのキャッシュを超えた時間を待った後、ちゃんとViewが再描画されるか、というものも確認することがあります。
 
 # Seasoning
 ^ 味付け
@@ -274,11 +270,6 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ なんらかの入力値のバリエーション網羅は、極力unit testに違い側で行うべきです。
 ^ 無数(a bunch of)の入力パターン全てをUI testで確認することは時間がかかるので避ける必要があります。
 ^ はじめのうちはui testで用意しても、refactorを続け、unit testが増えていくにつれて削除することは必要です。
-
-# Tips5: 要素のタップベースでシナリオを書く
-
-^ iOSのフレームワーク側の都合もあるのですが、XCUITestではある種のスクロールが不安定になります。そのため、そのような不安定な箇所を減らすことで、テスト自体の安定性をある程度確保していきます。
-^ これはどこまでautomationに寄せるかという話なので、時と場合に依存しますね。
 
 # more 🌶️
 
