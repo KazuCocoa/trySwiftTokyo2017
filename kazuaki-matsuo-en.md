@@ -110,16 +110,16 @@ In this period, Cookpad also have changed to catch up with the cycle.
 Release our app every two weeks or one months to challenge our service and UI.
 Recently, we changes source code around 5,000 ~ 10,000 lines per release.
 
-# What I talk for now
+# summary
 
 History of Cookpad iOS app and its changes
 diachronic quality in mobile
 
 # Tasting tests😋
 
-I start talking UI Test what I've done against the environment.
+I start talking UI Test what I've done for the environment.
 
-# History for UI Tests against Cookpad iOS App
+# History for UI Tests for Cookpad iOS App
 
 ![](images/history_for_ui_tests.png)
 
@@ -127,18 +127,30 @@ This repository show a growth of UI tests I implemented at Cookpad.
 I've developed the environment since 2014.
 I've supported the changes with this ui tests.
 
-# Re-Engineeringを進める
+# Why have we implemented this UI tests?
+
+# Re-Engineering
+
+Start tasting tests to re-egnineering.
+Especially, I talk about refactor/re-write code.
 
 # どこからテストを拡充していくか?
 
-
-# Why have we implemented this UI tests?
-
+> Writing unit tests before refactoring is sometimes impossible and often pointless.
 
 # Basic strategy for Re-Engineering
 
+  (internal) sorce code => |app| <= (externl) users
+
+Same as quality mode, we aproach the app from internal and external.
+"Internal" means sorce code side.
+"external" means end-user and GUI side.
 
 # 内部を変更できるようにするために、外部からカバーしていく
+
+Check if GUI/behaviour are broken from external.
+And re-write/refactor/implement new feature.
+developers continue to change code aggressive because if some feature broken, we can know the bug in gui level.
 
 # Unit tests for Re-Engineering
 

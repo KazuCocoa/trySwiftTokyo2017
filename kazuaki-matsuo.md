@@ -151,9 +151,9 @@ https://en.wikipedia.org/wiki/Kano_model
 > Writing unit tests before refactoring is sometimes impossible and often pointless.
 
 ^ rewriteやリファクタを推し進める時、高頻度でテストが行われ、それを元に正しいことを確認し続ける環境を持つことは最近では必要だと知っている人が多いでしょう
-^ ただ、例えばunit testに近い、コードに近い領域をいきなりテストし始めることは難しいです
-^ どのようにアプリのアーキテクチャを構成するか、にも大きく依存してきます。
-^ 一方で、unit testのテストをCIとして実施できるようにしなければ、高頻度の修正を将来に渡って実施し続けることは難しい
+^ ただ、例えば何も用意していない状態でunit testといったテストコードを書き始めることは難しいです。
+^ アーキテクチャも関係してきます。
+^ 一方で、unit testのテストをCIとして実施できるようにしなければ、高頻度の修正を将来に渡って実施し続けることは難しくなります。
 
 # Basic strategy for Re-Engineering
 
