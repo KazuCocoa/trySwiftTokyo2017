@@ -10,7 +10,7 @@ Today's my topic is associated with "TEST" since I'm test engineer at Cookpad.
 
 # About me
 
-First, I talk myself.
+First, I introduce myself.
 I'm kazuaki matsuo and working at Cookpad as test engineer.
 I've tried test automation for Android and iOS, and improved development processes and other many role to imprpve quality.
 So, "Software Engineer in Quality" might be more suitable name than test engineer in my company, I think.
@@ -209,15 +209,17 @@ I've implemented it with Ruby :p
 |シナリオ| <=> ｜操作の実装｜ <=> internal libraries <=> ruby_lib(appium ruby binding) <=> Appium <=> iOS(UIAutomation/XCUITest) <=> Cookpad App
 
 Our architecture for automated test is like this.
-We separate some layer to isolate scenarios for users and source code for iOS framework.
+We separate some layer to divide responsibilties for scenarios associated with end users and code associated with iOS framework.
+
 I'd like to independent scenarios from iOS related environment.
 Also, I'd like to independent implementations for iOS from user scenarios.
 
-Thus, we can decrease maintanance costs for user scenarios and changing iOS side.
-Separating the responsibility is used for developers, I think.
-
-<<追加>>
 iOS側が変化した時は、シナリオは変えず、internal librariesのところだけでiOSフレームワーク側の変更を吸収します
+
+Thus, we can decrease maintanance costs for user scenarios and changing iOS side.
+
+Separating the responsibility is used for developers.
+
 
 # Scenarios
 
@@ -232,21 +234,22 @@ I summarize and implement this avoid redundant scenarios.
 # Seasoning
 
 
-# Tips1: 内部コードから依存性を減らす
-このレベルのUI testで重要なことは、テスト対象となるアプリのViewの構造になるべく依存しないコードを書くことです。
-例えば、XPathのような以下のコードはアプリの構造が変化すしたりOSの更新によって頻繁に壊れます。
+# Tips1: reduce dependency with production code
+It is important to describe test scenarios independent to internal logic for production code.
+For example, the following finding elements on view with XPath will be broken easily if update OS version from iOS7 to iOS8.
 
 ```
 find_element :xpath, //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]
 ```
 
-そのため、accessibilityをちゃんと付与したり、表示される文言を基準に実装します。
+So, it is better to implement with accessibilityIdentifier or accessibilityLabel.
 
 ```
 find_element :accessibility_id, "arbitrary identifier"
 ```
 
-ちゃんと分離してテストコードを書くことで、iOSの環境が大きく変化した場合も多くのUIテストを壊すことなく、変化に追従できるようになる。
+Keep independency with scenarios and internal logic for production is also important for this level's tests.
+(BTW, this point also important for development.)
 
 # tips2: Don't run tests for all boundaries
 test for all boundaries is better to implement in unit test.
