@@ -187,7 +187,7 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ 社内で働くiOSエンジニアの多くも、自分の実装によって自分の想定していない不具合も表示されるものは特に、検出される可能性が高いことは心理的安全性にもつながります。
 ^ 実装の書き換えに怯えなくて良くなりますね。
 
-# Test environment for Mobile apps tend to be flipped pyramid easily
+# Flipped pyramid make development cycle slow
 
 ![](images/based_on_test_pyramid_mobile.png)
 - http://www.utest.com/articles/mobile-test-pyramid
@@ -200,9 +200,9 @@ https://en.wikipedia.org/wiki/Kano_model
 
 # Automated UI Test with Appium from 2014
 
-^ この問題に対して、私は2014年よりAppiumを中心としたUIテストを強化してきました。言語は表現力や会社の主要言語の関係でRubyをベースにしています。
-^ マニュアルテストだけのテスト要員はおらず、基本的にはこのUIテストによる多くのiOSのバリエーションに対するテストでテストを続けきました。
-^ 自動化されたテストは、多くの場合は3回以上実行すると元が取れるといわれます。(要出典)
+^ この問題に対して、私は2014年よりAppiumを中心としたUIテストを強化してきました。
+^ 手動テストを実施しながら、徐々に自動化を進めていきました。
+^ 言語は表現力や会社の主要言語の関係でRubyをベースにしています。
 
 # Architecture for UI Tests
 
@@ -240,9 +240,8 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 ^ 基本、シナリオレベルでは自然言語で、普段チームの人たちが使う言葉をベースにそうさを記述します。
 ^ これは、ユーザを模倣するシナリオを書く時にソースコードレベルの細かなことを書かないようにするためです。
 ^ そのような細かなものは、unit testなどに任せましょう。
-
 ^ シナリオを書く際、人を模倣すると言いましたが例えばspreadsheetなどで管理するようなテストケースをそのままシナリオに落とし込むわけではありません。
-^ iOSアプリのテストでは、simulaltorの初期化や起動などに時間が必要なので、ある程度のシナリオをまとめて実行するようにしたりします。
+
 
 # Seasoning
 ^ 味付け
