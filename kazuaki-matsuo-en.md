@@ -3,48 +3,48 @@
 
 Hello, everyone.
 I'm Kazu.
-Now, I'm so happy and excited to be able to talk for many Swift and iOS developers.
+Now, I'm so excited to be able to talk for many Swift and iOS developers.
 
-Today's my topic is associated with "TEST" since I'm a test engineer at Cookpad.
-"Tasting" used in my title means taste food stuff because my company is regarding with food.
+Today, I talk associated with "TEST" since I'm a test engineer.
+"Tasting" used in my title means taste stuff because my company is regarding with food.
 
 # About me
 
-First, I introduce myself.
+At first, I introduce myself.
 I'm Kazuaki Matsuo and working at Cookpad as a test engineer.
-I've tried test automation for Android and iOS and improved development processes and other many roles to improve several qualities.
-So, "Software Engineer in Quality" might be more suitable name than test engineer to explain me in my company, I think.
+I've tried test automation for mobile and improved development processes and other many roles to improve several qualities for our services.
+So, "Software Engineer in Quality" might be more suitable name to explain me in my company, I think.
 
 I use some languages in my work such as swift, ruby, java for android and elixir.
-Recently, I've maintained ruby binding client library for Appium.
+Recently, I've maintained Appium ruby binding client library.
 
 # 😋
 go ahead
 
 # A bunch of topics in "TEST"
-Even we use the word "TEST", it has various topics.
-
+Even we use the word "TEST", it has various meanings.
 For example, the word has categories such as usability test and performance test and has test level such as unit test and integration test.
-Today, I pick up a test pyramid which has three layers, unit test, integration test and UI test for automated test. In addition the pyramid has manual test outside of the pyramid.
+Today, I pick up test automation and a test pyramid which has three layers, unit test, integration test and UI test for automated test.
+In addition the pyramid has manual test outside of the pyramid.
 
 # test pyramid
 
 ![](images/based_on_test_pyramid.png)
 
 The pyramid is one of a famous diagram for test automation.
-This show ideal relationship and amount for unit tests, integration tests and UI tests in development.
-Unit tests deal with testing logic in code level and UI tests focus on simulate user behaviours against test target app.
+This shows ideal relationship and amount for unit tests, integration tests and UI tests in development.
+Unit tests deal with testing logic in code level and UI tests focus on simulate user behaviours against the test target app.
 Unit tests are small and fast but UI tests aren't.
 
 # How UI Tests support our development
-Today, you can taste UI tests and our story.
+Today, I focus on UI tests and how the tests support our development. I don't talk about unit level tests today.
+So, you can taste UI tests and our story.
 I'm happy if anyone gets the motivation to try UI tests after my talk.
-Meanwhile, I don't talk about unit level tests such as mock, protocol oriented..
 
 # We should know about the test target if we try to tests stuff
 (いまいち...)
 
-We should learn test target if we try to understand and taste some tests not only about tools but also strategies.
+We should learn test target if we try to understand and taste some tests not only about tools but also strategies and so on.
 So, I'll explain about Cookpad and its iOS app at first to help you understand the following topics.
 
 # What is Cookpad?
@@ -52,7 +52,7 @@ So, I'll explain about Cookpad and its iOS app at first to help you understand t
 ![](images/what_is_cookpad_world.png)
 
 Cookpad is one of famous recipe sharing service in the world.
-We have two kinds of the service, for Japan and for rest of the world for now.
+We have two kinds of services, for Japan and for rest of the world for now.
 According to the similarweb.com, Cookpad is the largest site in the food category.
 
 # Cookpad for iOS(Japan and Global)
@@ -62,7 +62,7 @@ According to the similarweb.com, Cookpad is the largest site in the food categor
 
 We also have two kinds of iOS applications for Cookpad.
 One is for Japan and another is for rest of the world.
-They are difference service growth level, so we haven't merged them yet.
+Their service growth level is difference so we haven't merged them yet.
 
 If anyone comes from out of Japan, you can see global app.
 
@@ -72,7 +72,7 @@ If anyone comes from out of Japan, you can see global app.
 
 I focus on the Japanese app today.
 
-# History for Cookpad iOS App
+# Histries for Cookpad iOS App(Japan)
 
 ![](images/history_for_cookpad_ios_image1.png)
 ![](images/history_for_cookpad_ios_image2.png)
@@ -81,7 +81,7 @@ I focus on the Japanese app today.
 ![](images/history_for_cookpad_ios_graph.png)
 
 The cookpad app has grown for around 5 years.
-I attached some screenshots to be able to check the growth and the changes.
+I attached some screenshots to be able to see the growth and the changes.
 The app changed UI component, add or delete any features or re-write/refactor implementations during the period.
 
 The production code also has grown and it is around 100 thousand lines except for comment, blank and new lines for now.
@@ -96,66 +96,64 @@ kano-model is one of the famous models to explain about quality.
 There is two main quality. One is Must-be Quality and another is Attractive Quality.
 Must-be quality in Japan is high because they require crash-free app as must-be quality in many cases. It is not attractive for them.
 
+I heard this must-be quality is more rigid than other countries...
+
 # diachronic quality in mobile app
+(なくすかもしれない) <= 新しい言葉が増えるので、さらっと流す説明以上になりそうならなくす
 
 Mobile app's environment changes frequently and OS version change every year.
-UI and design also change a few years cycle.
-Required quality by market also has changed.
+UI and design also change a few years cycle. Required quality by market also has changed.
 
 Recently, I sometimes address as diachronic quality like this movement.
 This name comes from linguistics.
 
-# Changes in Cookpad
+# How often cookpad app changes
 
 - release cycle: 2week ~ 1months
 - change ui / code
 
 In this period, Cookpad also has changed to catch up with the cycle.
-Release our app every two weeks or one month to challenge our service and UIs for the end users.
+Release our app every two weeks or one month to improve our service and UIs for the end users.
+Seldome, We change UI significantly.
 Recently, we change source code around 5,000 ~ 10,000 lines per release.
 
-# summary
+# Take a break
 
-Histories of Cookpad iOS app and its changes.
-diachronic quality in mobile.
+I talked histories of Cookpad iOS app and its changes, and diachronic quality to explain quality model which changes frequently.
 
 # Tasting tests😋
 
 I start talking UI Test what I've done for the environment.
 
-# History for UI Tests for Cookpad iOS App
+# Histories for UI Tests for Cookpad iOS App
 
 ![](images/history_for_ui_tests.png)
 
-This repository shows a growth of UI tests I implemented at Cookpad.
+This repository shows a growth of UI tests I and we've implemented at Cookpad.
 I've developed the environment since 2014.
-I've supported the changes with this kinds of UI tests.
 
-# Why have we implemented this UI tests?
+# Why have we implemented this UI tests?🤔
 
-# Re-Engineering
-
-Start tasting tests to re-engineering.
-Especially, I talk about how to step into re-write/refactor code.
+We knew our service need to develop continuously and we should evolve apps in the future.
+So, we should proceed re-engineering mobile apps.
 
 # Should we taste from?
 
 > Writing unit tests before refactoring is sometimes impossible and often pointless.
 
-According to the re-engineering, the quotation is described.
-it is true since we can't check behaviour without tests.
+This sentence is quoted from "Re-Engineering Legacy Software".
+It is true since we can't check behaviour without tests.
+
 The most of the developers may agree with re-write/refactor features without tests lead unexpected broken stuff.
-BTW, to make the target app testable, we should consider architecture for the app and other many things.
+In addition, if we make the target app testable, we should consider architecture for the app and other many things if target app isn't testable.
 
 On the other hand, without CI environment, it is difficult to iterate development cycle quickly without tests.
 
------ここまで-----
-
-# Basic strategy for Re-Engineering
+# Basic strategy
 
   (internal) sorce code => |app| <= (externl) users
 
-In this case, we approached to make the app testable from two aspects, internal and external.
+We approached to make the app testable from two aspects, internal and external.
 "Internal" means product source code side.
 "External" means end-user and GUI side.
 
@@ -166,8 +164,10 @@ check from external <=> re-write/refactor/implement from internal(and add unit t
 
 Check if GUI/behaviour are broken from external.
 And re-write/refactor/implement some features.
-Developers continue to change code aggressive because if some feature was broken, we can uncover the bug in UI level.
+Developers continue to change internal code and add unit tests aggressive because if some features are obviously broken, we can uncover the bug in UI level checking.
 So, we can fix the issue before release.
+
+This kind of UI level checking is not only automated tests but also manual checking.
 
 # Unit tests for Re-Engineering
 
@@ -175,7 +175,7 @@ The re-engineering also describes the following quotation.
 
 > Most developers would agree that unit test should be fully automated,
 
-I and most of the developers agree with this, I think.
+I think most of the developers agree with this.
 
 # Unit tests are not a silver bullet
 
@@ -183,35 +183,49 @@ But, it also describes as...
 
 > but the level of automation for other kind of tests(such as integration tests) is often much lower.
 
-# UI Test to support Re-Engineering
+Certainly, implementing tests for integration layer and UI layer is difficult than unit layer.
 
-But....
+# UI Test shuold be automated
+
+But...
 
 > One area that cries out for automation is UI testing.
 > (4.3.2. Regression testing without unit tests)
 
-So, UI tests take too many time and too many human resources in mobile in many cases.
-Because test automation for mobile is difficult than we app.
+yes, automated UI testing is very important.
 
-But, automated UI tests can support re-engineering in many times.
-You can check automatically most of the layouts, screen transactions without crashes and so on.
-You can also check combinations of various OS versions and resolutions without additional human resources.
+But...
+In many cases, UI tests take too many times and too many human resources in mobile because test automation for mobile is difficult.
 
-This benefit also lead psychological safety for developers.
+So, UI tests for mobile tend to conducted by manual.
 
 # Flipped pyramid make development cycle slow
 
 ![](images/based_on_test_pyramid_mobile.png)
 
-I talked ideal test pyramid for test automation before.
+By the way, I talked ideal test pyramid for test automation before.
+Unit tests is the biggest and UI tests are the smolest.
 But in the mobile context, it is easy to make it flipped.
-Because checking UIs manually is easy than test automation but it blocks swift development cycle in the future.
+
+Checking UIs manually is easy than test automation.
+But large manual tests take too many times blocks swift development cycle in the future.
+
+UI tests can support re-engineering frequently.
+
+# UI Test shold be automated(again)
+So, automating UI test is very importnat.
+
+You can check most of the layouts, screen transactions without crashes and so on automatically.
+You can also check combinations of various OS versions and resolutions without additional human resources.
+
+Certainly, designing test architecture for test automaiton is also important.
+Don't convert all manual tests to dirty automated tests.
 
 # implement the strategy
 
 # Automated UI Test with Appium from 2014
 
-So, I've tried to implement UI Test since 2014, I've joined cookpad.
+I've tried to implement UI Test since 2014, I've joined cookpad.
 While conducting manual tests, I've been working on test automation step by step.
 I've implemented it with Ruby :p
 
@@ -278,7 +292,7 @@ find_element :accessibility_id, "arbitrary identifier"
 
 Keep independent with scenarios and internal logic for production is also important for this kind of tests.
 
-# tips2: Don't run tests for all boundaries
+# tips2: Don't conduct tests for all boundaries
 Test for all boundaries is better to implement in the unit test.
 Because UI test is too slower than the unit test.
 So, if you implement all boundaries in UI side, it is better to move test from UI to unit and remove it from UI tests in the future.

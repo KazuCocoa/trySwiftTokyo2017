@@ -75,7 +75,7 @@ https://www.similarweb.com/top-websites/category/food-and-drink/cooking-and-reci
 
 ^ ただ、今日は、この日本向けのアプリを対象に話します。
 
-# History for Cookpad iOS App
+# Histries for Cookpad iOS App
 
 ![](images/history_for_cookpad_ios_image1.png)
 ![](images/history_for_cookpad_ios_image2.png)
@@ -99,13 +99,14 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ そのため、そういうことが当たり前と感じる人が多い傾向にあるようです。(cookpadのレビューと不具合を参考にすると)
 
 # Diachronic Quality in Mobile App
+(なくすかもしれない)
 
 ^ diachronic qualityという造語があります。
 ^ これは、変わり続ける品質を説明しようとしていることばです。言語学から影響を受けています。
 ^ モバイルアプリ、特にサービスとして提供しているアプリは時代の流れに合わせて変化が大きくなるので、この変化し続ける世界においても、先ほど挙げた日本のユーザが当たり前だと感じる明らかな不具合を減らす必要があります。
 ^ 例えば、iOSだとOSの変化やUIの変化、実装言語の変化といった品質に関わる要素が毎年といっていいほどに変わります。
 
-# Changes in Cookpad
+# How often cookpad app changes
 
 - サービス拡大のための挑戦
     - Change UIs, features...
@@ -137,13 +138,8 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ この間、先ほどのiOSアプリの変化の歴史をこの自動化されたテストによって支えてきました。
 
 # なぜここまでUI Testになぜ力を入れていたか🤔
-
-# Re-Engineeringを進める
-
-何か良い画像を埋め込みたい...
-
-^ クックパッドはシェアが広くなるとUIを整えたり、機能を整えたり、開発人数が増えた上でもそれを維持する仕組みが必要になってきました。
-^ そのため、re-writeやrefactorを推し進め、継続して開発を続ける体制を作る必要が出てきていました。
+^ 私たちは、自分たちのサービスが発展し続け、成長し続ける必要があると知っていた。
+^ そのため、モバイルアプリをre-engineeringしていく必要があった。
 
 # どこから手をつけるか?
 
@@ -164,37 +160,56 @@ https://en.wikipedia.org/wiki/Kano_model
 1. コードの内部を変更することができるように、UIの、コードとは独立したところでテストを用意する
 2. そのレベルで動作を確認できるようにしながら、内部コードを変更できるようにしていく
 
+現在、このUIレベルのテストは手動/自動関係なく話してます。
+
 # Unit tests for Re-Engineering
 
 > Most developers would agree that unit test should be fully automated,
 
 ^ re-engineeringにあるように、現在だと単体テストを書くとか、そこらへんは必要だという認識を多くの人が持っていることと思います。
-^ また、Swiftだとtypeをしっかり使うことやunit testやそのCI環境が基軸となることは最近では多くの人が納得することでしょう。
-^ ただ、5年とか前のアプリにおいて、十分にテストコードが書かれたものは少ないのではないでしょうか。
 
 # Unit tests are not a silver bullet
 
+ですが、さらには以下のようにも描かれています
+
 > but the level of automation for other kind of tests(such as integration tests) is often much lower.
 
-# UI Test to support Re-Engineering
+integration layer、UI layerのテストとレベルが高くなってくると自動化を進めることに対してモチベーションがunit testに比べて低くなるようです。
+
+# UI Test shuold be automated
+
+^ 一方で、
 
 > One area that cries out for automation is UI testing.
 > (4.3.2. Regression testing without unit tests)
 
-^ Re-Engineeringにはこのようなことも書かれているように、まさしく、UI Testこそ、変化に追従し、変化に追従するに当たって大事な要素になります。
-^ UIやシナリオの設計(体験の設計)が差別的な競争力になるモバイルアプリではなお。
-^ iOSでは、最近のSwiftへの置き換えも進めるように、UIレベル、つまりユーザが目にする範囲において確実に動作することが確認出来る環境を持っていることは大きな優位性になります。
-^ 社内で働くiOSエンジニアの多くも、自分の実装によって自分の想定していない不具合も表示されるものは特に、検出される可能性が高いことは心理的安全性にもつながります。
-^ 実装の書き換えに怯えなくて良くなりますね。
+^ Re-Engineeringにはこのようなことも書かれているように、まさしく、UI Testこそ、自動化する対象として大事な要素になります。
+
+^ しかし、多くの場合はUIテストは多くの時間と人員を使う。なぜなら、モバイルアプリのUIテスト自動化は難しいから。
+^ そのため、モバイルアプリのコンテキストでは手動でテスト実行をする傾向にあります。
 
 # Flipped pyramid make development cycle slow
 
 ![](images/based_on_test_pyramid_mobile.png)
 - http://www.utest.com/articles/mobile-test-pyramid
 
-^ ところで、モバイルアプリはこのように理想的なピラミッドとは逆のピラミッドになりやすいです
-^ そのため、Re-Engineeringを進めるための、特にUIに対するテストを自動化していくことは、理想的なピラミッドに近づけるにあたり大きな要素になります
-^ そうすることで、様々なバリエーションの解像度やOSバリエーションに対するUIレベルのテストを、手動で網羅するよりも短時間で評価できます
+^ ところで、少し前に私は理想的なテストピラミッドを話しました。
+^ unit testが一番大きく、ui testが一番小さいです。
+^ ところが、モバイルアプリはこのように理想的なピラミッドとは逆のピラミッドになりやすいです。
+
+^ 手動で動作確認することはテスト自動化よりも楽なためです。
+^ ただし、そのままでは実行に時間を多く使う一方になるので将来の俊敏な開発をブロックしてしまいます。
+
+^ そのため、Re-Engineeringを進めるための、特にUIに対するテストを自動化していくことは大事な要素になります。
+
+# UI Test shuold be automated(again)
+^ そのため、UIテストを自動化することはとても大事なのです。
+
+^ 自動で、レイアウトや画面遷移をクラッシュなくできることができます。
+^ OSや解像度の組み合わせを人員を集めなくても実施できます。
+
+^ 確かに、ちゃんと設計してテスト自動化を進めることは大事です。
+^ そのため、すべての手動テストを汚い自動化されたテストにすべきでもありません。
 
 # implement the strategy
 
