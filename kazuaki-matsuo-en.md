@@ -104,8 +104,9 @@ I heard this must-be quality is more rigid than other countries...
 Mobile app's environment changes frequently and OS version change every year.
 UI and design also change a few years cycle. Required quality by market also has changed.
 
-Recently, I sometimes address as diachronic quality like this movement.
-This name comes from linguistics.
+Recently, I sometimes mention such movement as diachronic quality.
+This word is influenced by linguistics.
+diachronic quality include many meanings, but I just mention for frequent change environment in this time.
 
 # How often cookpad app changes
 
@@ -117,7 +118,7 @@ Release our app every two weeks or one month to improve our service and UIs for 
 Seldome, We change UI significantly.
 Recently, we change source code around 5,000 ~ 10,000 lines per release.
 
-# Take a break
+# Take a break 🍵
 
 I talked histories of Cookpad iOS app and its changes, and diachronic quality to explain quality model which changes frequently.
 
@@ -125,7 +126,7 @@ I talked histories of Cookpad iOS app and its changes, and diachronic quality to
 
 I start talking UI Test what I've done for the environment.
 
-# Histories for UI Tests for Cookpad iOS App
+# A History for UI Tests for Cookpad Apps
 
 ![](images/history_for_ui_tests.png)
 
@@ -154,7 +155,7 @@ On the other hand, without CI environment, it is difficult to iterate developmen
   (internal) sorce code => |app| <= (externl) users
 
 We approached to make the app testable from two aspects, internal and external.
-"Internal" means product source code side.
+"Internal" means production code side.
 "External" means end-user and GUI side.
 
 # Make checkable from external to internal
@@ -185,7 +186,7 @@ But, it also describes as...
 
 Certainly, implementing tests for integration layer and UI layer is difficult than unit layer.
 
-# UI Test shuold be automated
+# UI Test should be automated
 
 But...
 
@@ -212,7 +213,7 @@ But large manual tests take too many times blocks swift development cycle in the
 
 UI tests can support re-engineering frequently.
 
-# UI Test shold be automated(again)
+# UI Test should be automated(again)
 So, automating UI test is very importnat.
 
 You can check most of the layouts, screen transactions without crashes and so on automatically.
@@ -276,7 +277,9 @@ This scenario is not equal to test case which conducted by manual.
 
 # Seasoning
 
-# Tips1: reduce dependency with production code
+I share some tips to seasoning tests.
+
+# reduce dependency from internal product code
 It is important to describe test scenarios independent of internal logic for production code.
 For example, the following finding elements on view with XPath will be broken easily if update OS version from iOS7 to iOS8. Because the path strongly depends on the iOS side.
 
@@ -287,7 +290,7 @@ find_element :xpath, //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCe
 So, it is better to implement with accessibilityIdentifier or accessibilityLabel than xpath.
 
 ```
-find_element :accessibility_id, "arbitrary identifier"
+find_element :accessibility_id, "an arbitrary identifier"
 ```
 
 Keep independent with scenarios and internal logic for production is also important for this kind of tests.
