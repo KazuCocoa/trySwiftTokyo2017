@@ -39,7 +39,7 @@
 ^ 実施するunit test/integration test/ui testの量がどのような関係にあると理想的か、ということを表した図です。
 ^ 多くの場合、unit testはメソッド単位のテスト、UI testがユーザの操作を模倣するような粒度での話になります。
 
-# Today's topic: How UI Tests support our development
+# How UI Tests support our development
 ^ どれだけUI Testが私たちの開発を支えたか
 
 ^ 今日はこの中でUI Testが私たちの何を支えたのか、をtastingしてみようと思います。
@@ -98,7 +98,7 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ 日本では、この当たり前品質の要求として特に基本的な機能が動作すること、例えば画面遷移ではクラッシュしないことなどの要求が高いです。
 ^ そのため、そういうことが当たり前と感じる人が多い傾向にあるようです。(cookpadのレビューと不具合を参考にすると)
 
-# Diachronic Quality in Mobile App
+# Diachronic Quality for Mobile
 (なくすかもしれない)
 
 ^ diachronic qualityという造語があります。
@@ -117,7 +117,7 @@ https://en.wikipedia.org/wiki/Kano_model
 ^ その間、私たちのアプリは、2週間〜1か月のスパンでここ2年間リリースを続けています。
 ^ 最近では、1回のリリースには5,000~10,000行程度の変更が加わりながらリリースされています。
 
-# ここまでで話したこと
+# 一息 ☕️
 
 - Cookpadアプリの変化の歴史
 - 日本市場が求めるもの
@@ -129,7 +129,7 @@ https://en.wikipedia.org/wiki/Kano_model
 
 ^ では、この環境の中で行ってきたUI Testの話をしていきたいと思います。
 
-# History for UI Tests for Cookpad iOS App
+# A History for UI Tests for Cookpad Apps
 
 ![](images/history_for_ui_tests.png)
 
@@ -176,7 +176,7 @@ https://en.wikipedia.org/wiki/Kano_model
 
 integration layer、UI layerのテストとレベルが高くなってくると自動化を進めることに対してモチベーションがunit testに比べて低くなるようです。
 
-# UI Test shuold be automated
+# UI Test should be automated
 
 ^ 一方で、
 
@@ -202,7 +202,7 @@ integration layer、UI layerのテストとレベルが高くなってくると�
 
 ^ そのため、Re-Engineeringを進めるための、特にUIに対するテストを自動化していくことは大事な要素になります。
 
-# UI Test shuold be automated(again)
+# UI Test should be automated(again)
 ^ そのため、UIテストを自動化することはとても大事なのです。
 
 ^ 自動で、レイアウトや画面遷移をクラッシュなくできることができます。
@@ -233,7 +233,24 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 
 # Scenarios
 
+```ruby
+機能: 複数の条件に合致する検索を正しく行うことができる
+  背景:
+    前提 'iPhone' で試験を行う
 
+  シナリオアウトライン: ユーザは自分のログイン状態によって変化する検索結果を見ることができる
+    * <user_status> ユーザでログインする
+    * <search_words> と検索欄から検索する
+    * 私は '3' 回下側にスクロールする
+    * 画面に 'xxx' が表示されている
+
+    例:
+      | user_status | search_words  |
+      | 'ps'        | 'ヤシガニ'     |
+      | 'non-ps'    | '月食'        |
+      | 'guests'    | 'カワエビ'     |
+      | 'guest'     | 'テナガエビ'   |
+```
 
 ^ 基本、シナリオレベルでは自然言語で、普段チームの人たちが使う言葉をベースにそうさを記述します。
 ^ これは、ユーザを模倣するシナリオを書く時にソースコードレベルの細かなことを書かないようにするためです。
@@ -246,10 +263,21 @@ link: http://www.slideshare.net/KazuMatsu/20141018-selenium-appiumcookpad
 
 このUIテストを構築する上で必要な味付けをいくつか共有します
 
-# Tips1: 内部コードから依存性を減らす
+# reduce dependency from internal product code
 
 ^ このレベルのUI testで重要なことは、テスト対象となるアプリのViewの構造になるべく依存しないコードを書くことです。
 ^ 例えば、XPathのような以下のコードはアプリの構造が変化すしたりOSの更新によって頻繁に壊れます。
+
+```
+find_element :xpath, //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]
+```
+
+そのため、以下のようにaccessibilityIdentifierやaccessibilityLabelを使います
+
+```
+find_element :accessibility_id, "an arbitrary identifier"
+```
+
 ^ ちゃんと分離してテストコードを書くことで、iOSの環境が大きく変化した場合も多くのUIテストを壊すことなく、変化に追従できるようになる。
 
 # Tips2: 環境変数によりテスト対象の挙動を帰る
