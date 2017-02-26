@@ -34,10 +34,6 @@ Appiumは、有名なモバイルアプリのテスト自動化ツールです�
 
 # test pyramid
 
-![](images/based_on_test_pyramid.png)
-
-- http://www.utest.com/articles/mobile-test-pyramid
-
 ^ このピラミッドを目にしたことがある人は多いかもしれません。
 ^ 実施するunit test/integration test/ui testの量がどのような関係にあると理想的か、ということを表した図です。
 ^ 多くの場合、unit testはメソッド単位のテスト、UI testがユーザの操作を模倣するような粒度での話になります。
