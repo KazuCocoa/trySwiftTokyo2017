@@ -26,6 +26,12 @@ Appiumは、有名なモバイルアプリのテスト自動化ツールです�
 例えば、usability testやperformanceテストといったカテゴリの話があったり、unit test/integration testといったテストレベルの話であったり。
 それらの中で、今日はテストピラミッドと呼ばれるunit testやintegration test、UI testと区分されるテーマに関してお話をします。
 
+--------
+
+ここまで
+
+--------
+
 # test pyramid
 
 ![](images/based_on_test_pyramid.png)
