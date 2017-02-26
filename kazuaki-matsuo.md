@@ -1,33 +1,30 @@
 # Tasting tests at Cookpad
 `@Kazu_cocoa`
 
-^ 皆さんこんにちは。クックパッドでテストエンジニアをしています松尾です。今日はSwiftやiOSに関係する人たちの集いで発表することができ、とても嬉しいですし、興奮しています。
-^ 私はテストエンジニアなので、今日の話はテストにまつわるものになります。
-^ ちなみに、このタイトルは私は料理にもかかわる会社に属しているのでtastingとしてみました。
+皆さんこんにちは。
+クックパッドでテストエンジニアをしてます松尾です。
+今日はSwiftやiOSに関係する人たちの集いで発表することができ、とても興奮しています。
+
+私はテストエンジニアなので、今日の話はテストにまつわるものになります。
+ちなみに、このタイトルは私は料理にもかかわる会社に属しているのでtastingとしてみました。
 
 # About me
 
-- Name: Kazuaki Matsuo
-- Company: Cookpad .Inc
-- Role: Test Engineer / Software Engineer in Quality
-- Dev: :swift: / :ruby: / :java: for  :android: / :elixir: :erlang:
-- maintain: Appium ruby-binding
-
-![](images/about_me_appium.png)
-
-^ まず自己紹介です。
-^ 私は普段はモバイルアプリのテスト自動化やプロセス改善、もっと大きく組織的な改善活動にも関わっています。
-^ 普段の活動はテストだけではないので、Software Engineer in Qualityと呼べるような品質に対していろいろな取り組みを行う、幅広い働き方かもしれません。
-^ 開発言語としてはSwiftなどの他にはRuby/Elixir/Java for Androidに触れることが多いです。
-^ 少し前から、AppiumのRuby bindingをメンテナンスしています。
+まず自己紹介です。
+私は松尾和昭といい、クックパッドでテストエンジニアやソフトウェアエンジニア in Qualityとして働いています。
+私は普段はモバイルアプリのテスト自動化やプロセス改善、もっと大きく組織的な改善活動にも関わっています。
+開発言語としてはSwift/Ruby//Java for Android/Elixirに触れることが多いです。
+最近、AppiumのRuby bindingをメンテナンスしています。
+Appiumは、有名なモバイルアプリのテスト自動化ツールです。
 
 # 😋
 
-# A bunch of topics in tests
-^ 一言でテスト、といっても、様々なテーマがあります。
+では、発表を始めましょう。
 
-^ 例えば、usability testやperformanceテストといったカテゴリの話があったり、unit test/integration testといったテストレベルの話であったり。
-^ それらの中で、今日はテストピラミッドと呼ばれるunit testやintegration test、UI testと区分されるテーマに関してお話をします。
+# A bunch of topics in tests
+"TEST"といっても、数多くのテーマや意味を持ちます。
+例えば、usability testやperformanceテストといったカテゴリの話があったり、unit test/integration testといったテストレベルの話であったり。
+それらの中で、今日はテストピラミッドと呼ばれるunit testやintegration test、UI testと区分されるテーマに関してお話をします。
 
 # test pyramid
 
