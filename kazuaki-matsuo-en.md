@@ -113,7 +113,7 @@ In addition, I talked a bit about quality for japan market and mobile.
 
 # Tasting how re-engineering the app with UI Tests😋
 
-I start talking UI Test what I've challenged for the environment.
+I start talking how we implement and conduct UI Tests to proceed re-engineering our app.
 
 # A History for UI Tests for Cookpad Apps
 
@@ -190,7 +190,7 @@ I talked the ideal test pyramid for test automation before.
 This shows unit tests are the largest and UI tests are the smallest.
 
 # Flipped pyramid make development cycle slow
-But in the mobile context, it is easy to make it flipped.
+But in the mobile context, it is easy to make it flip.
 
 
 Checking UIs manually is easy than test automation.
@@ -210,10 +210,11 @@ Don't convert all manual tests to dirty automated tests.
 
 # implement the strategy
 
-# Automated UI Test with Appium from 2014
+# We’ve been developed UI Tests since 2014
 
-I've tried to implement UI Test since 2014, I've joined cookpad.
-While conducting manual tests, I've been working on implementing test automation step by step.
+We’ve been developed UI Tests since 2014 to support re-engineering.
+At first, we had many manual tests and no automated UI tests.
+But currently, we have many UI Tests which cover around 80% screen transactions, and spot manual testing.
 
 # Architecture for UI Tests
 
@@ -314,5 +315,14 @@ UI tests need to separate responsibility from production code to catch up with s
 
 # Do you get motivations to challenge automated UI Tests? 🙌
 
+# Don’t forget this kind of challenges can’t do in developer’s spare time
+But don’t forget this kind of challenges can’t do in developer’s spare time.
+Certainly, some required skills are similar for each other.
+But software test and test automation needs a bit different skills and techniques.
+
+
 # Thanks
 Thanks for listening my talk.
+
+
+
