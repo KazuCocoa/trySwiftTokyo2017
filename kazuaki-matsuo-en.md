@@ -4,12 +4,12 @@ Hello, everyone.
 I'm Kazu.
 I'm so excited talking for many Swift and iOS developers.
 
-Today, I talk about "TEST" since I'm a test engineer.
-"Tasting" used in my title because my company is regarding with food.
+Today, I will talk about "TEST" since I'm a test engineer.
+I used “tasting” in my title because my company is food-related.
 
 # about me
 
-At first, I introduce myself.
+At first, I will introduce myself.
 I'm Kazuaki Matsuo and working at Cookpad as a test engineer and Software Engineer in Quality.
 I've tried test automation for mobile and improved development processes and other some roles to improve several qualities for our services.
 
@@ -19,7 +19,7 @@ Appium is one of the famous mobile test automation tools.
 
 # 😋
 
-go ahead
+let’s go Cooking!
 
 # A bunch of themes in tests
 
@@ -28,27 +28,18 @@ For example, it has categories such as usability test and performance test, and 
 
 Today, I pick up test level and a test pyramid associated with test automation.
 
-# Test pyramid
-This pyramid is one of a famous diagram for test automation.
-The pyramid has three layers, unit test, integration test and UI test.
-The pyramid has also manual test outside of the pyramid.
-
-This shows ideal relationship and amount for unit tests, integration tests and UI tests in development.
-
-Unit tests deal with checking logic in method level and UI tests focus on checking GUI level simulating user behaviours.
-Unit tests have the largest amount of test cases and UI tests have the smallest ones.
 
 # How UI Tests support our development
 
 I focus on UI tests and how the tests support our development.
-I don't talk about unit/integration level tests today.
+I won’t talk about unit/integration level tests today.
 
 So, you can taste how UI tests support our development and the strategy in our app as a case study.
 
 I'm happy if anyone gets the motivation to consider test strategy for your app and try UI tests after my talk.
 
 # We should know about the test target
-Before start talking tests, we should learn a test target.
+Before starting to talk about tests, I’ll explain about a test target.
 Because knowledge for the test target help you understand test strategies and  today’s case study.
 
 So, I explain about Cookpad and its iOS app at first.
@@ -58,30 +49,32 @@ Cookpad is one of the most famous recipe sharing services in the world.
 
 # simularweb.com
 
-According to the similarweb.com, Cookpad is the largest site for world wide in the food category.
+According to the similarweb.com, Cookpad is the largest site worldwide in the food category.
 
-We provide our service for two main areas, for Japan and for rest of the world right now.
+Currently, we provide our services for Japan and countries around the world.
+
 
 # Cookpad for iOS(Japan and Global)
 
 We also have two kinds of iOS app.
 One is for Japan and another is for rest of the world.
-Their service growth level is difference, so we haven't merged them yet.
+Their service growth level is different, so we haven't merged them yet.
 
-Anyone comes from out of Japan, you can see global app.
+The Global application can be downloaded from any non-Japanese app Store.
 
 # Cookpad for iOS(Japan)
 
 Today’s main target is for Japan Edition.
 
-# The app has developed for a long time
+# The app has been developed for a long time
 
 The Japan edition has grown for around 5 years.
 I attached some screenshots to show the growth and the changes.
 
 The app changed UI component, add or delete any features or re-write/refactor implementations during the period.
 
-The production code also has grown and it is around one hundred thousand lines except for comment, blank and new lines right now.
+The production code also has grown and it is around one hundred thousand lines excluding
+ for comment, blank and new lines right now.
 
 # How often Cookpad app changes
 
@@ -187,7 +180,7 @@ But...
 
 yes, automated UI testing is very important.
 
-In many cases, UI tests take too many times and too many human resources in mobile because test automation for mobile is difficult.
+In many cases, UI tests take too much time and too many human resources in mobile because test automation for mobile is difficult.
 UI tests for mobile tend to conducted by manual.
 
 
@@ -237,7 +230,7 @@ I think separating responsibility is familiar to developers.
 
 This is an example to describe scenarios.
 I implement scenarios with data-driven testing style with Turnip.
-Turnip allow us to describe tests with national languages.
+Turnip allow us to describe tests with natural languages.
 This scenario is close to end-user.
 So, I chose the national language to describe the scenarios.
 
@@ -246,7 +239,7 @@ So, I chose the national language to describe the scenarios.
 This is steps and wrappers to convert national language to programming language.
 This example is implemented by Ruby.
 
-These two layer is foundations for UI tests.
+These two layers are foundations for UI tests.
 
 # 🍛Seasoning🍲
 I share some tips to season the tests.
@@ -302,9 +295,11 @@ If their changes broke some features, UI tests can uncover the errors because ou
 # introduce Swift
 
 We start to introducing Swift into the app a few months ago.
-Near 30% code already implemented by Swift/
+Near 30% code is already implemented in Swift.
 
-Also in this caalready tests help fearless changes for developers in UI/request level.
+
+Also in this case, tests make developer confident changes for developers in UI/request level.
+
 
 # faster🚴 and more stable
 Current UI tests are enough for current our development process.
