@@ -95,23 +95,23 @@ The changes have some new features, GUI update, refactor/re-wrote internal logic
 # kano-model and Japan market
 by the way, I also explain a bit about quality.
 kano-model is one of the famous models to explain about quality.
-There is two main quality.
+The model has two main quality.
 One is Must-be Quality and another is Attractive Quality.
-Must-be quality means you must satisfied with when you release.
+Must-be quality is a criteria you must satisfied with basic needs.
 
-Must-be quality in Japan have required crash-free app for almost views for a long time.
+Must-be quality in Japan have required crash-free app for almost views and no degrade features for a long time.
 So, we had needed to keep crash-free conditions in our development.
 It is not attractive for them.
 
 # Diachronic Quality for Mobile
-Mobile app's environment have been changed through time.
+Mobile app's environment have been changed quickly through time.
 OS versions, UI, design, user experience, required quality by market and so on.
 
 Recently, I sometimes mention such a movement as diachronic quality.
 This word is influenced by linguistics.
 Diachronic means something has developed and evolved through time.
 
-Yes, a bunch of mobile environments have changed through time.
+A bunch of mobile environments have changed through time.
 
 # take a break 🍵
 
@@ -131,7 +131,7 @@ I've developed the environment since 2014.
 In 2014, We expected our service need to develop continuously and we should evolve apps in the future.
 So, we needed to proceed re-engineering for our mobile apps.
 
-Re-engineering means ability to be able to develop stuff continuously without degrade features and keep development speed and so on, in this time.
+Re-engineering means re-structured the target and make it testable to be able to develop stuff continuously without degrade features and keep development speed and so on.
 
 # Should we taste from?
 
@@ -154,7 +154,7 @@ We approached to proceed re-engineering the app from two aspects, internal and e
 # Make checkable from external to internal
 I explain a cycle.
 
-Check whether GUI/behaviour are broken from external.
+Check whether GUI, behaviour are broken from external.
 
 And re-write/refactor/implement some features and implement unit tests.
 
@@ -193,8 +193,8 @@ UI tests for mobile tend to conducted by manual.
 
 # Test Pyramid
 
-I talked ideal test pyramid for test automation before.
-Unit tests is the largest and UI tests are the smallest.
+I talked the ideal test pyramid for test automation before.
+This shows unit tests are the largest and UI tests are the smallest.
 
 # Flipped pyramid make development cycle slow
 But in the mobile context, it is easy to make it flipped.
